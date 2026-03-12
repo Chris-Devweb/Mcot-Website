@@ -83,6 +83,7 @@ export function Navbar() {
                     src="/logo-cotonou.png" 
                     alt="Logo de la Ville de Cotonou" 
                     fill 
+                    sizes="(max-width: 1024px) 90px, 115px"
                     className="object-contain object-bottom" 
                     priority
                   />

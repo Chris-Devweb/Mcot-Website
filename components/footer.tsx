@@ -31,6 +31,7 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
             src="/logo-cotonou.png" 
             alt="Watermark Logo" 
             fill 
+            sizes="210px"
             className="object-contain" 
           />
         </div>
