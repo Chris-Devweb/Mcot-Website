@@ -55,7 +55,7 @@ export function HeroSection() {
             <Link href="/services">
               <Button
                 variant="outline"
-                className="border-2 border-white text-white text-[13px] lg:text-[14px] font-semibold hover:bg-white hover:text-[#0B4264] rounded-sm whitespace-nowrap leading-tight bg-transparent"
+                className="border-2 border-white text-white text-[13px] lg:text-[14px] font-semibold hover:bg-white hover:text-[#0B4264] rounded-sm whitespace-nowrap leading-tight bg-transparent h-11 md:h-12 px-6 md:px-8"
               >
                 Demande d&apos;acte de<br />naissance
               </Button>
@@ -63,7 +63,7 @@ export function HeroSection() {
             <Link href="/decouvrir-cotonou">
               <Button
                 variant="outline"
-                className="border-2 border-white text-white text-[13px] lg:text-[14px] font-semibold hover:bg-white hover:text-[#0B4264] rounded-sm flex items-center gap-2 whitespace-nowrap bg-transparent"
+                className="border-2 border-white text-white text-[13px] lg:text-[14px] font-semibold hover:bg-white hover:text-[#0B4264] rounded-sm flex items-center gap-2 whitespace-nowrap bg-transparent h-11 md:h-12 px-6 md:px-8"
               >
                 Découvrir Cotonou
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

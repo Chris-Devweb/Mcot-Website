@@ -34,8 +34,8 @@ export function ActualitesSection() {
   return (
     <section className="relative w-full py-16 lg:py-20 bg-white overflow-visible font-sans">
       
-      {/* Palm leaf background decoration — top left, behind content */}
-      <div className="absolute top-0 left-0 w-[200px] lg:w-[260px] pointer-events-none z-0 -translate-y-8 -translate-x-4 opacity-90">
+      {/* Palm leaf background decoration — stays fully behind the section, without overlapping le hero */}
+      <div className="absolute top-10 left-0 w-[200px] lg:w-[260px] pointer-events-none -z-10 -translate-x-4 opacity-80">
         <div className="relative w-full h-[280px] lg:h-[340px]">
           <Image
             src="/palme.png"

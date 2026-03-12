@@ -175,7 +175,7 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
           <Button
             type="button"
             size="icon"
-            className="absolute left-0 z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg"
+            className="absolute left-6 sm:left-10 lg:left-[180px] z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg"
             aria-label="Précédent"
             onClick={prev}
           >
@@ -188,7 +188,7 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
           <Button
             type="button"
             size="icon"
-            className="absolute right-0 z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg"
+            className="absolute right-6 sm:right-10 lg:right-[180px] z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg"
             aria-label="Suivant"
             onClick={next}
           >

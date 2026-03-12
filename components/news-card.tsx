@@ -44,7 +44,7 @@ export function NewsCard({
         {/* Date + Voir Plus row */}
         <div className="flex items-center justify-between mb-3">
           <span className="text-[12px] text-gray-400 font-medium">Le {date}</span>
-          <span className="text-[12px] font-bold text-[#83CEE9]">
+          <span className="text-[12px] font-bold text-[#83CEE9] opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
             Voir Plus
           </span>
         </div>

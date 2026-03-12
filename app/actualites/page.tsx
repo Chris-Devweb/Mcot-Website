@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { ActualitesSection } from "@/components/actualites-section";
 import { AgendaSection } from "@/components/agenda-section";
@@ -13,6 +14,7 @@ export default function ActualitesPage() {
       <PageHero
         title="Actualités"
         subtitle="Découvrez toute l'actualité de la Mairie"
+        imageSrc="/newsbackground.png"
       />
       {/* Flash news banner */}
       <section className="bg-[#FDE100] py-3 px-4 sm:px-[100px] lg:px-[150px]">
@@ -23,33 +25,50 @@ export default function ActualitesPage() {
       </section>
       <ActualitesSection />
       <AgendaSection />
-      {/* Avis et Communiqués - compact block */}
-      <section className="py-12 lg:py-16 bg-white px-4 sm:px-[100px] lg:px-[150px]">
-        <h2 className="text-[26px] lg:text-[30px] font-bold text-[#0B4264] mb-6">
-          Avis et Communiqués
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
-            <a
-              key={i}
-              href="#"
-              className="flex flex-col rounded-2xl border border-gray-200 overflow-hidden bg-white hover:border-[#83CEE9] hover:shadow-lg transition-all"
-            >
-              <div className="h-32 bg-gray-100 flex items-center justify-center">
-                <span className="text-gray-400 text-4xl">📄</span>
-              </div>
-              <div className="p-4">
-                <span className="text-xs text-gray-400">Le 10/03/23</span>
-                <h3 className="font-bold text-[#0B4264] mt-1 line-clamp-2">
-                  Municipalité de Cotonou communique sur le paiement de la taxe d&apos;exploitation
-                </h3>
-                <p className="text-sm text-gray-500 mt-2 line-clamp-2">
-                  A la suite d&apos;une délibération municipale...
-                </p>
-                <span className="text-xs font-bold text-[#83CEE9] mt-2 inline-block">Voir Plus</span>
-              </div>
-            </a>
-          ))}
+      {/* Avis et Communiqués - section avec fond doc.png */}
+      <section className="relative py-12 lg:py-16 bg-white px-4 sm:px-[100px] lg:px-[150px] overflow-hidden">
+        <div className="absolute inset-y-0 right-0 w-1/3 pointer-events-none opacity-30 hidden md:block">
+          <Image
+            src="/doc.png"
+            alt=""
+            fill
+            className="object-contain object-right"
+          />
+        </div>
+        <div className="relative z-10">
+          <h2 className="text-[26px] lg:text-[30px] font-bold text-[#0B4264] mb-6">
+            Avis et Communiqués
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <a
+                key={i}
+                href="#"
+                className="flex flex-col rounded-2xl border border-gray-200 overflow-hidden bg-white/95 hover:border-[#83CEE9] hover:shadow-lg transition-all"
+              >
+                <div className="relative h-32 bg-gray-100">
+                  <Image
+                    src="/doc.png"
+                    alt="Document officiel"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <span className="text-xs text-gray-400">Le 10/03/23</span>
+                  <h3 className="font-bold text-[#0B4264] mt-1 line-clamp-2">
+                    Municipalité de Cotonou communique sur le paiement de la taxe d&apos;exploitation
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+                    A la suite d&apos;une délibération municipale...
+                  </p>
+                  <span className="text-xs font-bold text-[#83CEE9] mt-2 inline-block">
+                    Voir Plus
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
       {/* Radio officielle */}
