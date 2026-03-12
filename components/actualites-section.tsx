@@ -41,6 +41,7 @@ export function ActualitesSection() {
             src="/palme.png"
             alt=""
             fill
+            sizes="(max-width: 1024px) 200px, 260px"
             className="object-contain object-left-top"
           />
         </div>
