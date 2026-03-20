@@ -8,6 +8,7 @@ import {
   ChevronDown,
   Menu
 } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { FacebookIcon, XIcon, InstagramIcon, YoutubeIcon, LinkedinIcon } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import {
@@ -19,6 +20,13 @@ import {
 } from '@/components/ui/sheet';
 
 export function Navbar() {
+  const pathname = usePathname();
+
+  const getLinkClass = (path: string) => {
+    const isActive = pathname === path || pathname.startsWith(`${path}/`);
+    return `transition-colors whitespace-nowrap ${isActive ? 'text-white font-bold' : 'hover:text-white'}`;
+  };
+
   return (
     <header className="relative w-full z-50 font-sans">
       {/* Background container for the main navbar color */}
@@ -93,16 +101,16 @@ export function Navbar() {
 
             {/* 2. Desktop Navigation Links */}
             <nav className="hidden lg:flex shrink-0 justify-center items-center gap-[40px] text-[#0B4264] text-[15px] font-medium">
-              <Link href="/actualites" className="hover:text-blue-900 transition-colors whitespace-nowrap">Actualités</Link>
-              <Link href="/decouvrir-cotonou" className="hover:text-blue-900 transition-colors whitespace-nowrap">Découvrez Cotonou</Link>
+              <Link href="/actualites" className={getLinkClass('/actualites')}>Actualités</Link>
+              <Link href="/decouvrir-cotonou" className={getLinkClass('/decouvrir-cotonou')}>Découvrez Cotonou</Link>
               
               {/* Municipalité dropdown */}
               <div className="relative group flex items-center cursor-pointer">
-                <span className="flex items-center gap-1 hover:text-blue-900 transition-colors whitespace-nowrap">
+                <span className={`flex items-center gap-1 transition-colors whitespace-nowrap ${pathname.startsWith('/municipalite') ? 'text-white font-bold' : 'hover:text-white'}`}>
                   Municipalité
                   <ChevronDown size={14} className="mt-0.5 opacity-80" strokeWidth={2} />
                 </span>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-52 bg-white shadow-xl rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-52 bg-white shadow-xl rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 border border-gray-100 font-normal">
                   <div className="py-2 flex flex-col">
                     <Link href="/municipalite" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Le Maire</Link>
                     <Link href="/municipalite#ca" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Les CA et commissions</Link>
@@ -111,9 +119,9 @@ export function Navbar() {
                 </div>
               </div>
               
-              <Link href="/services" className="hover:text-blue-900 transition-colors whitespace-nowrap">Services</Link>
-              <Link href="/documents" className="hover:text-blue-900 transition-colors whitespace-nowrap">Documents</Link>
-              <Link href="/contact" className="hover:text-blue-900 transition-colors whitespace-nowrap">Contactez-nous</Link>
+              <Link href="/services" className={getLinkClass('/services')}>Services</Link>
+              <Link href="/documents" className={getLinkClass('/documents')}>Documents</Link>
+              <Link href="/contact" className={getLinkClass('/contact')}>Contactez-nous</Link>
             </nav>
 
             {/* 3. Actions: Search + Mobile Menu */}

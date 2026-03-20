@@ -22,7 +22,7 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
   const mapImage = mapVersion === 1 ? '/benin1.png' : '/benin2.png';
 
   return (
-    <footer className="relative w-full bg-[#35567A] font-sans pt-16 mt-32 text-white overflow-visible border-t-[4px]" style={{ borderImage: 'linear-gradient(to right, #FDBC2F, #08663A) 1' }}>
+    <footer className="relative w-full bg-[#35567A] font-sans pt-16 text-white overflow-visible border-t-[4px]" style={{ borderImage: 'linear-gradient(to right, #FDBC2F, #08663A) 1' }}>
       
       {/* Background Watermark Logo */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">

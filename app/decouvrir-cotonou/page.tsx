@@ -6,31 +6,34 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Play, FileText, Camera, Building2 } from "lucide-react";
 
 const STATS = [
-  { value: "832 km²", label: "Superficie de la commune" },
-  { value: "16%", label: "De la superficie du Benin" },
-  { value: "2 000 000", label: "Nombre d'habitants" },
+  { value: "832 km²", label: "Superficie du Bénin" },
+  { value: "16%", label: "De la superficie du Bénin" },
+  { value: "2 000 000", label: "Nombre d\"habitants" },
 ];
 
 const OBJECTIVES = [
   {
-    icon: Play,
-    title: "Guide de la construction",
-    desc: "Document explicatif des règles et démarches pour construire à Cotonou.",
-  },
-  {
     icon: FileText,
-    title: "Formulaire d'enregistrement des entreprises",
-    desc: "Formulaire officiel pour l'enregistrement des entreprises auprès de la mairie.",
-  },
-  {
-    icon: Camera,
-    title: "Réglementation urbanistique",
-    desc: "Textes et règles d'urbanisme en vigueur sur le territoire communal.",
+    title: "Contexte Stratégique",
+    desc:
+      "La ville de Cotonou domine le paysage urbain du Bénin en raison de son importance démographique et économique et du rôle qu\"elle joue dans le réseau urbain ouest-africain. Cotonou est la seule ville béninoise à avoir atteint un million d\"habitants...",
   },
   {
     icon: Building2,
-    title: "Charte graphique et identité visuelle",
-    desc: "Document de référence pour l'utilisation du logo et des couleurs de la ville.",
+    title: "Situation Économique",
+    desc:
+      "La Mairie de Cotonou s\"engage à offrir des services de qualité pour améliorer le cadre de vie de tous les citoyens. Découvrez les opportunités de la ville de Cotonou.",
+  },
+  {
+    icon: Camera,
+    title: "Potentialités",
+    desc:
+      "Le Maire et son Conseil municipal sur le chantier du futur Hôtel de Ville...",
+  },
+  {
+    icon: Play,
+    title: "Quelques lieux touristiques à Cotonou",
+    desc: "Découvrez les merveilles de Cotonou.",
   },
 ];
 
@@ -46,16 +49,21 @@ export default function DecouvrirCotonouPage() {
         label="Mairie de Cotonou / Présente"
         title="Découvrez la ville de Cotonou"
         subtitle="Découvrez les opportunités de la ville de Cotonou"
+        imageSrc="/discoverbackground.png"
       />
 
       <section className="py-12 lg:py-16 px-4 sm:px-[100px] lg:px-[150px] bg-white">
+        {/* Contexte Stratégique */}
         <h2 className="text-2xl lg:text-3xl font-bold text-[#0B4264] text-center mb-6">
-          Commune de Cotonou
+          Contexte Stratégique
         </h2>
         <p className="text-gray-600 max-w-3xl mx-auto text-center mb-12">
-          La commune de Cotonou est la capitale économique du Bénin. Elle s&apos;étend sur un territoire
-          dynamique où se mêlent activités commerciales, culturelles et administratives. Cotonou
-          constitue un pôle d&apos;attraction majeur pour les investissements et le développement régional.
+          La ville de Cotonou domine le paysage urbain du Bénin en raison de son importance démographique et économique et du rôle
+          qu'elle joue dans le réseau urbain ouest-africain. Cotonou est la seule ville béninoise à avoir atteint un million d'habitants
+          en 2013 et assure à elle seule 60% des transactions commerciales et 90% des activités du pays. Cotonou occupe donc une position
+          centrale dans la conurbation qu'elle forme avec Abomey-Calavi, Sèmè-Podji, Ouidah, Tori-Bossito et Zè. Ces villes connaissent
+          toutes des dynamiques urbaines très importantes qui en font la plus petite en surface. Avec les Communes de Sèmè-Kpodji et
+          Abomey-Calavi, Cotonou forme une grande métropole dont :
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -69,7 +77,7 @@ export default function DecouvrirCotonouPage() {
 
         <div className="relative w-full max-w-2xl mx-auto aspect-[4/3] rounded-2xl overflow-hidden mb-12">
           <Image
-            src="/backsection1.png"
+            src="/cotonouback.png"
             alt="Ville de Cotonou"
             fill
             className="object-cover"
@@ -77,20 +85,27 @@ export default function DecouvrirCotonouPage() {
         </div>
 
         <p className="text-gray-600 max-w-3xl mx-auto text-center mb-16">
-          La ville offre un cadre de vie en constante amélioration, avec des infrastructures
-          modernisées et des services publics renforcés. Les projets d&apos;aménagement et de
-          développement durable y tiennent une place centrale pour le bien-être des citoyens.
+          Ces dernières années, l'environnement socioéconomique de Cotonou a connu d'importantes évolutions qui ont permis
+          l'émergence de nouvelles dynamiques urbaines, notamment avec l'accroissement démographique, l'extension spatiale,
+          le développement des infrastructures et la diversification des activités économiques. Cependant, cette croissance
+          s'accompagne de défis majeurs tels que la gestion des déchets, l'accès aux services de base, la sécurité urbaine
+          et la planification urbaine. Pour y faire face, la Mairie de Cotonou met en œuvre des stratégies de développement
+          durable et inclusif, visant à améliorer la qualité de vie des citoyens et à renforcer l'attractivité de la ville.
         </p>
 
+        {/* Nos objectifs et documents à télécharger */}
         <h2 className="text-2xl lg:text-3xl font-bold text-[#0B4264] text-center mb-10">
-          Nos objectifs et documents à télécharger
+          Axes et objectifs stratégiques
         </h2>
+        <p className="text-gray-600 max-w-3xl mx-auto text-center mb-12">
+          Découvrez les axes et objectifs stratégiques de la municipalité
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {OBJECTIVES.map((o) => (
             <Card key={o.title} className="border-gray-200 overflow-hidden">
-              <CardContent className="p-6 flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#0B4264] flex items-center justify-center shrink-0">
+              <CardContent className="p-6 flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-full bg-[#0B4264] flex items-center justify-center shrink-0 mb-4">
                   <o.icon className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -109,21 +124,44 @@ export default function DecouvrirCotonouPage() {
               PDF
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white">RÈGLEMENT D&apos;URBANISME</h3>
+              <h3 className="text-xl font-bold text-white">Cotonou demain - Objectifs stratégiques de la ville de Cotonou</h3>
               <p className="text-white/90 text-sm mt-1">
-                Découvrez les règlements d&apos;urbanisme de la ville de Cotonou
+                Découvrez les orientations stratégiques de la ville de Cotonou
               </p>
             </div>
           </div>
           <Link href="/documents">
             <Button className="bg-[#0B4264] hover:bg-[#072a40] text-white gap-2">
-              Voir le règlement
+              Télécharger le document
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
               </svg>
             </Button>
           </Link>
         </div>
+
+        {/* Quels lieux touristiques */}
+        <section className="py-12 lg:py-16">
+          <h2 className="text-2xl lg:text-3xl font-bold text-[#0B4264] text-center mb-10">
+            Quelques lieux touristiques à Cotonou
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
+                <Image
+                  src={`/routedespeches.png`}
+                  alt="Lieu touristique"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <p className="absolute bottom-4 left-4 text-white text-lg font-bold">
+                  La route des pêches
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </section>
     </>
   );

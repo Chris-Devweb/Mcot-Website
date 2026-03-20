@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Search, Filter, FileText, Download, BookOpen } from "lucide-react";
+import { NewsCard } from "@/components/news-card";
 
 const TABS = [
   "Administration de la ville de Cotonou",
@@ -41,6 +42,7 @@ export default function DocumentsPage() {
       <PageHero
         title="Documents officiels, Textes et Lois"
         subtitle="Consulter les e-documents officiels de votre commune"
+        imageSrc="/documentbackground.png"
       />
       <section className="py-8 lg:py-12 px-4 sm:px-[100px] lg:px-[150px] bg-white">
         <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mb-6">
@@ -129,43 +131,40 @@ export default function DocumentsPage() {
         </div>
       </section>
 
-      {/* Avis et Communiqués */}
-      <section className="py-12 px-4 sm:px-[100px] lg:px-[150px] bg-[#F5F8FB]">
-        <h2 className="text-2xl font-bold text-[#0B4264] mb-6">Avis et Communiqués</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
-            <Card key={i} className="overflow-hidden">
-              <div className="h-36 bg-gray-200" />
-              <CardContent className="p-4">
-                <span className="text-xs text-gray-500">Le XX/XX</span>
-                <h3 className="font-bold text-[#0B4264] mt-1 line-clamp-2">
-                  Municipalité de Cotonou: communiqué sur le payement de la taxe d&apos;exploitation
-                </h3>
-                <span className="text-xs font-bold text-[#83CEE9] mt-2 inline-block">Voir Plus</span>
-              </CardContent>
-            </Card>
+      {/* Section: Avis et Communiqués */}
+      <section className="py-12 lg:pt-16 pb-[180px] lg:pb-[230px] px-4 sm:px-[100px] lg:px-[150px] bg-[#F5F8FB]">
+        <div className="mb-8">
+          <h2 className="text-[26px] lg:text-[30px] font-bold text-[#0B4264]">Avis et Communiqués</h2>
+          <p className="text-[#0B4264] text-[15px] font-semibold mt-1">Presse officielle</p>
+        </div>
+
+        {/* 6 Avis Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {[1, 2, 3, 4, 5, 6].map((id) => (
+            <NewsCard
+              key={id}
+              date="10/07/25"
+              title="Municipalité de Cotonou: communiqué sur le paiement de la taxe d'exploitation"
+              excerpt="A la tête d'une délégation municipale composée de la troisième adjointe au maire Irène Françoise BEHANZIN, ..."
+              imageSrc="/doc.png"
+            />
           ))}
         </div>
-      </section>
 
-      {/* Radio */}
-      <section className="py-8 px-4 sm:px-[100px] lg:px-[150px] bg-white">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#E53935] flex items-center justify-center text-white text-sm">📻</div>
-          <h2 className="text-xl font-bold text-[#0B4264]">Radio officielle de Cotonou (94.3)</h2>
+        {/* Pagination */}
+        <div className="flex justify-center gap-2">
+          <Button size="icon" variant="outline" className="rounded-full bg-white border-transparent text-[#0B4264] hover:bg-[#0B4264] hover:text-white transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </Button>
+          <Button size="icon" className="rounded-full bg-[#E5E9EC] text-[#0B4264] hover:bg-[#0B4264] hover:text-white w-10 h-10 transition-colors">1</Button>
+          <Button size="icon" className="rounded-full bg-[#E5E9EC] text-[#0B4264] hover:bg-[#0B4264] hover:text-white w-10 h-10 transition-colors">2</Button>
+          <Button size="icon" className="rounded-full bg-[#E5E9EC] text-[#0B4264] hover:bg-[#0B4264] hover:text-white w-10 h-10 transition-colors">3</Button>
+          <Button size="icon" className="rounded-full bg-[#E5E9EC] text-[#0B4264] hover:bg-[#0B4264] hover:text-white w-10 h-10 transition-colors">...</Button>
+          <Button size="icon" className="rounded-full bg-[#E5E9EC] text-[#0B4264] hover:bg-[#0B4264] hover:text-white w-10 h-10 transition-colors">10</Button>
+          <Button size="icon" className="rounded-full bg-[#0B4264] text-white hover:bg-[#072a40] w-10 h-10 transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </Button>
         </div>
-        <Button variant="outline" className="mt-4 border-[#0B4264] text-[#0B4264] hover:bg-[#0B4264] hover:text-white">
-          Ecouter la radio →
-        </Button>
-      </section>
-
-      {/* Pagination */}
-      <section className="py-6 px-4 flex justify-center gap-2">
-        <Button size="icon" variant="outline" className="rounded-full">←</Button>
-        <Button size="icon" className="rounded-full bg-[#0B4264] w-10 h-10">1</Button>
-        <Button size="icon" variant="outline" className="rounded-full w-10 h-10">2</Button>
-        <Button size="icon" variant="outline" className="rounded-full w-10 h-10">3</Button>
-        <Button size="icon" variant="outline" className="rounded-full">→</Button>
       </section>
     </>
   );

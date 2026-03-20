@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export function PageHero({ title, subtitle, imageSrc = "/backsection1.png", label, className = "" }: PageHeroProps) {
   return (
-    <section className={`relative w-full min-h-[280px] md:min-h-[340px] lg:min-h-[400px] overflow-hidden ${className}`}>
+    <section className={`relative w-full min-h-[220px] md:min-h-[260px] lg:min-h-[300px] overflow-hidden ${className}`}>
       <div className="absolute inset-0 z-0">
         <Image
           src={imageSrc}
@@ -28,7 +28,7 @@ export function PageHero({ title, subtitle, imageSrc = "/backsection1.png", labe
           }}
         />
       </div>
-      <div className="relative z-10 w-full h-full px-4 sm:px-[100px] lg:px-[150px] flex flex-col justify-center pt-24 pb-16 lg:pt-28 lg:pb-20">
+      <div className="relative z-10 w-full h-full px-4 sm:px-[100px] lg:px-[150px] flex flex-col justify-center pt-20 pb-12 lg:pt-24 lg:pb-16">
         {label && (
           <p className="text-white/90 text-xs md:text-sm font-medium uppercase tracking-widest mb-1">
             {label}

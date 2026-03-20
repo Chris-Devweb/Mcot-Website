@@ -85,17 +85,17 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
   };
 
   return (
-    <section className="relative w-full py-16 lg:py-20 bg-[#F5F8FB] overflow-hidden font-sans">
+    <section className="relative w-full py-14 lg:py-18 bg-[#F5F8FB] overflow-hidden font-sans">
       <div className="w-full">
         
-      {/* Section Header — blue bar extends to left edge */}
-      <div className="relative mb-12">
+      {/* Section Header */}
+      <div className="relative mb-10">
         <div className="px-4 sm:px-[100px] lg:px-[150px]">
           <h2 className="text-[28px] lg:text-[32px] font-bold text-[#0B4264] mb-2">
             Agenda
           </h2>
         </div>
-        {/* Blue bar: starts from left edge 0, but text is indented to match layout */}
+        {/* Blue bar: starts from left edge */}
         <div className="bg-[#0B4264] py-1.5 pr-4 pl-4 sm:pl-[100px] lg:pl-[150px] self-start inline-flex" style={{ borderTopRightRadius: '4px', borderBottomRightRadius: '4px' }}>
           <p className="text-white text-[14px] font-semibold tracking-wide">
             Évènements <span className="font-bold">À ne pas manquer</span>
@@ -103,11 +103,24 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
         </div>
       </div>
 
-        {/* Carousel */}
-        <div className="relative flex items-center justify-center h-[320px] lg:h-[350px] px-4 sm:px-[100px] lg:px-[150px]">
+        {/* Carousel with arrows on sides */}
+        <div className="relative flex items-center justify-center px-16 lg:px-24">
           
+          {/* Left Arrow — outside carousel */}
+          <Button
+            type="button"
+            size="icon"
+            className="absolute left-4 lg:left-8 z-30 w-11 h-11 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg shrink-0"
+            aria-label="Précédent"
+            onClick={prev}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
+            </svg>
+          </Button>
+
           {/* Cards container */}
-          <div className="relative w-full flex items-center justify-center">
+          <div className="relative w-full flex items-center justify-center h-[320px] lg:h-[360px]">
             {events.map((event, index) => {
               const offset = getOffset(index);
               if (Math.abs(offset) > 1) return null;
@@ -124,28 +137,27 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
                   <div
                     className={`
                       relative overflow-hidden rounded-2xl
-                      ${isActive ? 'w-[340px] lg:w-[380px] h-[280px] lg:h-[310px]' : 'w-[280px] h-[230px] lg:h-[250px]'}
+                      ${isActive ? 'w-[340px] lg:w-[400px] h-[290px] lg:h-[330px]' : 'w-[270px] h-[230px] lg:h-[260px]'}
                       transition-all duration-500
                     `}
                     style={{
                       border: isActive ? '2px solid rgba(131,206,233,0.6)' : 'none',
                     }}
                   >
-                    {/* Background image with parallax feel */}
+                    {/* Background image */}
                     <Image
                       src={event.imageSrc}
                       alt={event.title}
                       fill
                       className="object-cover"
                       style={{
-                        // Simulates parallax depth by shifting inner image based on offset
-                        transform: `scale(1.1) translateX(${offset * -4}%)`,
+                        transform: `scale(1.08) translateX(${offset * -3}%)`,
                         transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                       }}
                     />
 
-                    {/* Dark overlay at bottom for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    {/* Dark overlay at bottom */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
 
                     {/* Date Badge — top right */}
                     <div className="absolute top-3 right-3 bg-white rounded-lg px-2.5 py-1.5 text-center shadow-md">
@@ -171,24 +183,11 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
             })}
           </div>
 
-          {/* Left Arrow */}
+          {/* Right Arrow — outside carousel */}
           <Button
             type="button"
             size="icon"
-            className="absolute left-6 sm:left-10 lg:left-[180px] z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg"
-            aria-label="Précédent"
-            onClick={prev}
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
-            </svg>
-          </Button>
-
-          {/* Right Arrow */}
-          <Button
-            type="button"
-            size="icon"
-            className="absolute right-6 sm:right-10 lg:right-[180px] z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg"
+            className="absolute right-4 lg:right-8 z-30 w-11 h-11 lg:w-12 lg:h-12 rounded-full bg-[#0B4264] text-white flex items-center justify-center hover:bg-[#083050] transition-colors shadow-lg shrink-0"
             aria-label="Suivant"
             onClick={next}
           >

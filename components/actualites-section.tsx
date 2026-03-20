@@ -34,9 +34,9 @@ export function ActualitesSection() {
   return (
     <section className="relative w-full py-16 lg:py-20 bg-white overflow-visible font-sans">
       
-      {/* Palm leaf background decoration — stays fully behind the section, without overlapping le hero */}
-      <div className="absolute top-10 left-0 w-[200px] lg:w-[260px] pointer-events-none -z-10 -translate-x-4 opacity-80">
-        <div className="relative w-full h-[280px] lg:h-[340px]">
+      {/* Palm leaf background decoration — strictly inside this section */}
+      <div className="absolute top-0 left-0 w-[220px] lg:w-[300px] pointer-events-none -mt-16 lg:-mt-24" style={{ zIndex: 0 }}>
+        <div className="relative w-full h-[320px] lg:h-[420px]">
           <Image
             src="/palme.png"
             alt=""
@@ -54,13 +54,10 @@ export function ActualitesSection() {
           <div>
             {/* Title row */}
             <div className="flex items-center gap-3 mb-1">
-              {/* Animated broadcast-style icon */}
               <div className="flex items-center justify-center w-8 h-8 relative">
                 <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
-                  {/* Outer arcs */}
                   <path d="M4 16a12 12 0 0 1 24 0" stroke="#E53935" strokeWidth="2.5" strokeLinecap="round"/>
                   <path d="M8 16a8 8 0 0 1 16 0" stroke="#E53935" strokeWidth="2.5" strokeLinecap="round"/>
-                  {/* Inner dot */}
                   <circle cx="16" cy="16" r="2.5" fill="#E53935"/>
                 </svg>
               </div>
