@@ -112,8 +112,7 @@ export function Navbar() {
                 </span>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-52 bg-white shadow-xl rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 border border-gray-100 font-normal">
                   <div className="py-2 flex flex-col">
-                    <Link href="/municipalite" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Le Maire</Link>
-                    <Link href="/municipalite#ca" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Les CA et commissions</Link>
+                    <Link href="/municipalite" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Municipalité</Link>
                     <Link href="/municipalite/projets" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Projets</Link>
                   </div>
                 </div>

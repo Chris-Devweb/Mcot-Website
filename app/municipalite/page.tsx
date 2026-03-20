@@ -15,9 +15,9 @@ const TABS = [
 ];
 
 const ADJOINTS = [
-  { name: "AHOUANDJINOU Randyx R.", role: "1er Adjoint au Maire", image: "/actu1.png" },
-  { name: "ADJAGBONI Gatien", role: "2ème Adjoint", image: "/actu2.png" },
-  { name: "BEHANZIN Irène Françoise", role: "3ème Adjointe", image: "/actu1.png" },
+  { name: "AHOUANDJINOU Randyx R.", role: "1er Adjoint au Maire", image: "/agents municipaux/randix-ahoundjinou-1688319485.jpg" },
+  { name: "ADJAGBONI Gatien", role: "2ème Adjoint", image: "/agents municipaux/gatien-adjagboni-1688319501.jpg" },
+  { name: "BEHANZIN Irène Françoise", role: "3ème Adjointe", image: "/agents municipaux/behanzin-irene-1773756473.jpg" },
 ];
 
 const CABINET = [
@@ -59,6 +59,7 @@ export default function MunicipalitePage() {
         label="MAIRIE DE COTONOU"
         title="Municipalité"
         subtitle="Découvrez notre équipe municipale"
+        imageSrc="/municipalityback.png"
       />
 
       <section className="py-8 px-4 sm:px-[100px] lg:px-[150px] bg-white">
@@ -87,10 +88,10 @@ export default function MunicipalitePage() {
                 <CardContent className="p-0">
                   <div className="relative w-full aspect-square max-w-[280px] mx-auto">
                     <Image
-                      src="/actu1.png"
+                      src="/agents municipaux/luc-gnacadja-1773755964.jpg"
                       alt="Le Maire"
                       fill
-                      className="object-cover rounded-t-2xl"
+                      className="object-cover rounded-t-2xl cursor-pointer hover:opacity-90 transition-opacity"
                     />
                   </div>
                   <div className="p-6 text-center">

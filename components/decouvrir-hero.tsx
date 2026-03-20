@@ -1,0 +1,72 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+export function DecouvrirHero() {
+  const [showHorse, setShowHorse] = useState(false);
+
+  useEffect(() => {
+    // Alternates every 3000ms
+    const timer = setInterval(() => {
+      setShowHorse((p) => !p);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative w-full h-[75vh] min-h-[600px] lg:h-[85vh] lg:min-h-[700px] overflow-hidden flex flex-col justify-center items-center">
+      {/* Background Images */}
+      {/* Both images are positioned absolutely. We fade between them based on state */}
+      <div className="absolute inset-0 z-0 bg-[#0B4264]">
+        <Image
+          src="/agojie.png"
+          alt="Monument Amazone Agojie"
+          fill
+          className={`object-cover object-top lg:object-center transition-opacity duration-300 ease-out ${
+            showHorse ? "opacity-0" : "opacity-100"
+          }`}
+          priority
+        />
+        <Image
+          src="/horse.png"
+          alt="Statue Cheval"
+          fill
+          className={`object-cover object-top lg:object-center transition-opacity duration-300 ease-out ${
+            showHorse ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        {/* Dark overlay to make the masked text more readable and the background look moody like the mockup */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      {/* Main Content inside the hero */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 -mt-10">
+        <div className="text-[20px] md:text-[28px] lg:text-[40px] font-bold text-white mb-0 tracking-wide">
+          ICI <span className="text-[#FDBC2F]">C&apos;EST</span>
+        </div>
+
+      </div>
+
+      {/* Bottom Buttons */}
+      <div className="absolute bottom-10 lg:bottom-16 z-20 flex flex-col sm:flex-row gap-4 lg:gap-6 px-4">
+        <Link href="/agenda">
+          <Button className="bg-white hover:bg-gray-100 text-[#0B4264] text-[15px] lg:text-[18px] font-bold px-10 py-8 lg:py-10 rounded-md shadow-2xl flex flex-col items-center justify-center leading-tight">
+            <span>Voir l&apos;agenda des</span>
+            <span>évènements à venir</span>
+          </Button>
+        </Link>
+        <Link href="#">
+          <Button className="bg-white hover:bg-gray-100 text-[#0B4264] text-[15px] lg:text-[18px] font-bold px-10 py-8 lg:py-10 rounded-md shadow-2xl flex items-center gap-3">
+            Où résider à Cotonou
+            <svg className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+            </svg>
+          </Button>
+        </Link>
+      </div>
+    </section>
+  );
+}

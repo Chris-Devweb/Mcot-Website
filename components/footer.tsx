@@ -22,7 +22,7 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
   const mapImage = mapVersion === 1 ? '/benin1.png' : '/benin2.png';
 
   return (
-    <footer className="relative w-full bg-[#35567A] font-sans pt-16 text-white overflow-visible border-t-[4px]" style={{ borderImage: 'linear-gradient(to right, #FDBC2F, #08663A) 1' }}>
+    <footer className="relative z-40 w-full bg-[#35567A] font-sans pt-16 text-white overflow-visible border-t-[4px]" style={{ borderImage: 'linear-gradient(to right, #FDBC2F, #08663A) 1' }}>
       
       {/* Background Watermark Logo */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">
@@ -113,8 +113,8 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
           </div>
           
           {/* Map of Benin Image Container */}
-          {/* Visible on responsive but absolute on desktop to overlap */}
-          <div className="hidden lg:block absolute right-0 bottom-12 w-[220px] h-[480px] xl:w-[250px] xl:h-[550px] z-20 pointer-events-none">
+          {/* Always visible as requested, placed absolutely on right edge. Low opacity on mobile to not obscure text. */}
+          <div className="absolute right-[-20px] bottom-12 w-[160px] h-[340px] md:w-[200px] md:h-[440px] xl:w-[250px] xl:h-[550px] z-20 pointer-events-none opacity-40 lg:opacity-100">
             <div className="relative w-full h-full">
               <Image 
                 src={mapImage}
