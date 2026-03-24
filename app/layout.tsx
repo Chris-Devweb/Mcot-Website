@@ -4,6 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { CowrieLoader } from "@/components/cowrie-loader";
+import { NewsModalRoot } from "@/components/news-modal-root";
+import { GlobalNotificationRoot } from "@/components/global-notification";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -31,6 +34,9 @@ export default function RootLayout({
     <html lang="fr" className={cn("font-sans", montserrat.variable)}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="min-h-screen flex flex-col bg-white">
+          <CowrieLoader />
+          <NewsModalRoot />
+          <GlobalNotificationRoot />
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
           <Footer mapVersion={1} />

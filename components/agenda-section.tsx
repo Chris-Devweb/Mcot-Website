@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { EventModal } from '@/components/event-modal';
 
 export interface AgendaEvent {
   id: number;
@@ -50,6 +51,7 @@ interface AgendaSectionProps {
 
 export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedEvent, setSelectedEvent] = useState<AgendaEvent | null>(null);
 
   const prev = () => setActiveIndex((i) => (i - 1 + events.length) % events.length);
   const next = () => setActiveIndex((i) => (i + 1) % events.length);
@@ -85,6 +87,7 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
   };
 
   return (
+  <>
     <section className="relative w-full py-14 lg:py-18 bg-[#F5F8FB] overflow-hidden font-sans">
       <div className="w-full">
         
@@ -132,7 +135,13 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
                   key={event.id}
                   className="absolute cursor-pointer"
                   style={style}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    if (isActive) {
+                      setSelectedEvent(event);
+                    } else {
+                      setActiveIndex(index);
+                    }
+                  }}
                 >
                   <div
                     className={`
@@ -198,7 +207,12 @@ export function AgendaSection({ events = DEFAULT_EVENTS }: AgendaSectionProps) {
         </div>
       </div>
     </section>
-  );
+
+    {/* Event detail modal */}
+    {selectedEvent && (
+      <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+    )}
+  </>);
 }
 
 export default AgendaSection;

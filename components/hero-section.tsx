@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { windowNewsModal } from '@/components/news-modal-root';
+import { windowNotification } from '@/components/global-notification';
 
 const ACTU_SLIDES = [
   {
@@ -27,7 +29,9 @@ export function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: 680 }}>
+    <>
+      {/* Added z-20 so that the palm leaf from the following section stays underneath the HeroSection, acting as a background element */}
+      <section className="relative w-full overflow-hidden z-20" style={{ minHeight: 680 }}>
       {/* ── Background photo ── */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -76,14 +80,22 @@ export function HeroSection() {
 
           {/* CTA Buttons — side by side, tall */}
           <div className="flex flex-row gap-4">
-            <Link href="/services">
-              <Button
-                variant="outline"
-                className="border-2 border-white text-white text-[13px] lg:text-[14px] font-semibold hover:bg-white hover:text-[#0B4264] rounded-sm bg-transparent h-14 px-6 md:px-8 whitespace-nowrap"
-              >
-                Demande d&apos;acte de naissance
-              </Button>
-            </Link>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                windowNotification.show({
+                  title: "Notification",
+                  description: "Vous allez être redirigé vers le site suivant pour poursuivre votre demande.",
+                  linkText: "eservices.anip.bj",
+                  linkHref: "https://eservices.anip.bj",
+                  duration: 3000
+                });
+              }}
+              className="border-2 border-white text-white text-[13px] lg:text-[14px] font-semibold hover:bg-white hover:text-[#0B4264] rounded-sm bg-transparent h-14 px-6 md:px-8 whitespace-nowrap transition-colors"
+            >
+              Demande d&apos;acte de naissance
+            </button>
             <Link href="/decouvrir-cotonou">
               <Button
                 variant="outline"
@@ -98,8 +110,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* ActuCard flush right, starting exactly where the text block ends vertically */}
-        <div className="flex justify-end mt-4 lg:mt-0">
+        {/* ActuCard flush right, moved up slightly from the bottom using margin-bottom */}
+        <div className="flex justify-end mt-4 lg:mt-0 mb-8 lg:mb-48">
           <div className="w-full max-w-[380px] lg:max-w-[420px]">
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden font-sans">
               {/* Card header */}
@@ -132,15 +144,21 @@ export function HeroSection() {
                     <span className="font-bold text-[#0B4264]">Cotonou</span>{' '}
                     : {ACTU_SLIDES[activeSlide].title}
                   </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 text-[#0B4264] text-[12px] font-bold mt-3 hover:underline"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const currentArticle = { ...ACTU_SLIDES[activeSlide], date: "10/07/25" };
+                      const others = ACTU_SLIDES.filter(s => s.id !== currentArticle.id).map(s => ({ ...s, date: "10/07/25" }));
+                      windowNewsModal.open(currentArticle, others);
+                    }}
+                    className="inline-flex items-center gap-1.5 text-[#0B4264] text-[12px] font-bold mt-3 hover:underline cursor-pointer"
                   >
                     Voir Plus
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
                 <div className="relative w-[100px] h-[90px] rounded-xl overflow-hidden shrink-0">
                   <Image
@@ -156,6 +174,7 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

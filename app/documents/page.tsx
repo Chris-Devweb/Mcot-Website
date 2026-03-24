@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import NextImage from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Search, Filter, FileText, Download, BookOpen } from "lucide-react";
+import { Search, Filter, Download, BookOpen } from "lucide-react";
 import { NewsCard } from "@/components/news-card";
+import { windowNotification } from "@/components/global-notification";
 
 const TABS = [
   "Administration de la ville de Cotonou",
@@ -33,9 +35,12 @@ const DOCS = [
   },
 ];
 
+const PDF_FILE = '/declaration-finale-1697277402.pdf';
+
 export default function DocumentsPage() {
   const [activeTab, setActiveTab] = useState(0);
   const [search, setSearch] = useState("");
+  const [pdfOpen, setPdfOpen] = useState(false);
 
   return (
     <>
@@ -110,7 +115,18 @@ export default function DocumentsPage() {
                     <BookOpen className="h-4 w-4 mr-1" />
                     Lire
                   </Button>
-                  <Button size="sm" className="bg-[#0B4264] hover:bg-[#072a40]">
+                  <Button
+                    size="sm"
+                    className="bg-[#0B4264] hover:bg-[#072a40]"
+                    onClick={() => {
+                      windowNotification.show({ title: 'Téléchargement réussi !', description: 'Votre document a bien été téléchargé', duration: 3000 });
+                      // Trigger actual PDF download
+                      const a = document.createElement('a');
+                      a.href = PDF_FILE;
+                      a.download = 'declaration-finale.pdf';
+                      a.click();
+                    }}
+                  >
                     <Download className="h-4 w-4 mr-1" />
                     Télécharger
                   </Button>
@@ -141,13 +157,22 @@ export default function DocumentsPage() {
         {/* 6 Avis Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {[1, 2, 3, 4, 5, 6].map((id) => (
-            <NewsCard
+            <button
               key={id}
-              date="10/07/25"
-              title="Municipalité de Cotonou: communiqué sur le paiement de la taxe d'exploitation"
-              excerpt="A la tête d'une délégation municipale composée de la troisième adjointe au maire Irène Françoise BEHANZIN, ..."
-              imageSrc="/doc.png"
-            />
+              type="button"
+              onClick={() => setPdfOpen(true)}
+              className="group flex flex-col text-left rounded-2xl border border-gray-200 overflow-hidden bg-white cursor-pointer transition-all duration-300 hover:border-[#83CEE9] hover:shadow-[0_4px_24px_rgba(131,206,233,0.35)] hover:-translate-y-1"
+            >
+              <div className="relative w-full h-[190px] overflow-hidden">
+                <NextImage src="/doc.png" alt="Avis" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div className="flex flex-col flex-1 p-4">
+                <span className="text-[12px] text-gray-400 font-medium mb-2">Le 10/07/25</span>
+                <h3 className="text-[14px] lg:text-[15px] font-bold text-[#0B4264] leading-snug">
+                  Municipalité de Cotonou: communiqué sur le paiement de la taxe d’exploitation
+                </h3>
+              </div>
+            </button>
           ))}
         </div>
 
@@ -166,6 +191,48 @@ export default function DocumentsPage() {
           </Button>
         </div>
       </section>
+
+      {/* PDF Viewer Modal */}
+      {pdfOpen && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+          onClick={() => setPdfOpen(false)}
+        >
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div
+            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[860px] h-[85vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* PDF Modal Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-100 shrink-0">
+              <span className="text-[15px] font-bold text-[#0B4264]">📄 Déclaration Officielle — Commune de Cotonou</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href={PDF_FILE}
+                  download="declaration-finale.pdf"
+                  onClick={() => windowNotification.show({ title: 'Téléchargement réussi !', description: 'Votre document a bien été téléchargé', duration: 3000 })}
+                  className="flex items-center gap-1.5 text-[13px] font-bold text-[#0B4264] border border-[#0B4264] rounded-md px-3 py-1.5 hover:bg-[#0B4264] hover:text-white transition-colors"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Télécharger
+                </a>
+                <button
+                  onClick={() => setPdfOpen(false)}
+                  className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-[15px] transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            {/* PDF iframe */}
+            <iframe
+              src={`${PDF_FILE}#toolbar=0`}
+              className="flex-1 w-full"
+              title="Document PDF"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

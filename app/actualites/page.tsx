@@ -71,7 +71,7 @@ export default function ActualitesPage() {
         imageSrc="/newsbackground.png"
       />
       {/* Flash news banner */}
-      <section className="py-10 px-4 sm:px-[100px] lg:px-[150px] bg-white flex flex-col md:flex-row items-stretch gap-4 justify-center">
+      <section className="py-10 pb-4 px-4 sm:px-[100px] lg:px-[150px] bg-[#F5F8FB] flex flex-col md:flex-row items-stretch gap-4 justify-center">
         {/* Red block */}
         <div className="bg-[#E53935] text-white px-8 py-4 flex items-center justify-center font-bold text-sm md:text-base shrink-0 rounded-[2px] shadow-sm uppercase tracking-wide">
           FLASH NEWS :
@@ -93,28 +93,14 @@ export default function ActualitesPage() {
       </section>
 
       {/* Actualités à la Une */} 
-      <section className="py-12 lg:py-16 px-4 sm:px-[100px] lg:px-[150px] bg-white">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#E53935] shrink-0" />
-            <h2 className="text-lg font-bold text-[#0B4264] uppercase">Actualités - À la Une</h2>
-          </div>
-          <Button
-            asChild
-            variant="outline"
-            className="border-[#0B4264] text-[#0B4264] hover:bg-[#0B4264] hover:text-white"
-          >
-            <a href="#">Voir Plus →</a>
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <section className="py-8 lg:py-12 px-4 sm:px-[100px] lg:px-[150px] bg-[#F5F8FB]">
+        <div className="w-full max-w-5xl mx-auto">
           <ActuCard
             title="Le Maire et son Conseil municipal sur le chantier du futur Hôtel de Ville"
             imageSrc="/actu1.png"
             imageAlt="Le Maire et son Conseil municipal sur le chantier du futur Hôtel de Ville"
             href="#"
-            totalSlides={1}
+            totalSlides={3}
             activeSlide={0}
           />
         </div>

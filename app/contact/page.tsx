@@ -6,10 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, MapPin, Phone, Clock, Mail } from "lucide-react";
 import { FacebookIcon, XIcon, InstagramIcon, YoutubeIcon, LinkedinIcon } from "@/components/icons";
+import { windowNotification } from "@/components/global-notification";
 
 export default function ContactPage() {
   return (
-    <div className="w-full bg-[#FAF9F8] -mt-6">
+    <div className="w-full bg-[#FAF9F8]">
       {/* ── Background Image & Header Text ── */}
       <section className="relative w-full pt-[170px] pb-48 lg:pt-[244px] lg:pb-[350px] overflow-hidden">
         <div className="absolute inset-0 z-0 w-full h-full">
@@ -46,7 +47,16 @@ export default function ContactPage() {
             <h2 className="text-[20px] lg:text-[22px] font-bold text-black mb-6">
               Laissez-nous votre message
             </h2>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={(e) => {
+              e.preventDefault();
+              import('@/components/global-notification').then(({ windowNotification }) => {
+                windowNotification.show({
+                  title: 'Message envoyé !',
+                  description: 'Votre message a bien été envoyé, nous vous renverrons bientôt une réponse. Surveillez votre email. Merci beaucoup !',
+                  duration: 4000,
+                });
+              });
+            }}>
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
                   <label className="block text-[13px] text-gray-700 mb-1.5 font-medium">Votre Nom complet</label>
@@ -181,7 +191,17 @@ export default function ContactPage() {
                 Recevez directement dans votre boîte mail des informations concernant votre commune.<br />
                 Garantie sans SPAMS.
               </p>
-              <form className="w-full max-w-2xl flex flex-col items-center">
+              <form 
+                className="w-full max-w-2xl flex flex-col items-center"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  windowNotification.show({
+                    title: "Inscription Réussie !",
+                    description: "Votre email a bien été reçu pour inscription à notre newsletter, toutes les informations capitales de la commune depuis votre téléphone !",
+                    duration: 4000
+                  });
+                }}
+              >
                 <div className="w-full text-left mb-6">
                   <label className="block text-[#0B4264] text-[14px] font-bold mb-2">Votre Email :</label>
                   <Input placeholder="Ex : info@gmail.com" className="w-full bg-[#EBE9E8]/90 border-transparent py-7 px-4 rounded-lg text-[14px] focus-visible:ring-[#0B4264]" />

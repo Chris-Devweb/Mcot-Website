@@ -1,6 +1,10 @@
+"use client";
+
 import Image from 'next/image';
+import { windowNewsModal } from '@/components/news-modal-root';
 
 export interface NewsCardProps {
+  id?: number;
   date: string;
   title: string;
   excerpt: string;
@@ -10,6 +14,7 @@ export interface NewsCardProps {
 }
 
 export function NewsCard({
+  id = 1,
   date,
   title,
   excerpt,
@@ -18,11 +23,22 @@ export function NewsCard({
   href = '#',
 }: NewsCardProps) {
   return (
-    <a
-      href={href}
+    <button
+      type="button"
+      onClick={(e) => {
+         e.preventDefault();
+         const article = { id, title, date, imageSrc, excerpt };
+         // The mock "autres articles" for aesthetic parity on cards clicked from external regions
+         const others = [
+           { id: 101, title: "Construction de nouveaux modules de classes par la mairie de Cotonou", date: "10/07/25", imageSrc: "/actu2.png" },
+           { id: 102, title: "Cotonou: Le Maire et son Conseil municipal sur le chantier", date: "11/07/25", imageSrc: "/actu1.png" },
+           { id: 103, title: "La Mairie déploie sa politique participative", date: "12/07/25", imageSrc: "/doc.png" }
+         ].filter(a => a.imageSrc !== imageSrc).slice(0, 2);
+         windowNewsModal.open(article, others);
+      }}
       className="
         group
-        flex flex-col rounded-2xl border border-gray-200 overflow-hidden
+        flex flex-col text-left rounded-2xl border border-gray-200 overflow-hidden
         bg-white font-sans cursor-pointer
         transition-all duration-300 ease-in-out
         hover:border-[#83CEE9] hover:shadow-[0_4px_24px_rgba(131,206,233,0.35)]
@@ -59,7 +75,7 @@ export function NewsCard({
           {excerpt}
         </p>
       </div>
-    </a>
+    </button>
   );
 }
 

@@ -25,7 +25,7 @@ export function DecouvrirHero() {
           src="/agojie.png"
           alt="Monument Amazone Agojie"
           fill
-          className={`object-cover object-top lg:object-center transition-opacity duration-300 ease-out ${
+          className={`object-cover object-top lg:object-center transition-opacity duration-700 ease-out brightness-[1.10] contrast-[1.15] saturate-[1.10] ${
             showHorse ? "opacity-0" : "opacity-100"
           }`}
           priority
@@ -34,20 +34,19 @@ export function DecouvrirHero() {
           src="/horse.png"
           alt="Statue Cheval"
           fill
-          className={`object-cover object-top lg:object-center transition-opacity duration-300 ease-out ${
+          className={`object-cover object-top lg:object-center transition-opacity duration-700 ease-out brightness-[1.10] contrast-[1.15] saturate-[1.10] ${
             showHorse ? "opacity-100" : "opacity-0"
           }`}
         />
-        {/* Dark overlay to make the masked text more readable and the background look moody like the mockup */}
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Lighter, subtle overlay to enhance brightness while keeping text readable */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
       </div>
 
       {/* Main Content inside the hero */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 -mt-10">
-        <div className="text-[20px] md:text-[28px] lg:text-[40px] font-bold text-white mb-0 tracking-wide">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 mb-[100px] sm:mb-[140px] lg:mb-[220px]">
+        <div className="text-[24px] md:text-[32px] lg:text-[44px] font-bold text-white mb-0 tracking-wide drop-shadow-xl" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.6)' }}>
           ICI <span className="text-[#FDBC2F]">C&apos;EST</span>
         </div>
-
       </div>
 
       {/* Bottom Buttons */}

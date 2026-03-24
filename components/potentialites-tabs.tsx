@@ -26,7 +26,7 @@ export function PotentialitesTabs() {
   const currentList = activeTab === "forces" ? FORCES : OPPORTUNITES;
 
   return (
-    <div className="bg-[#FEFDFD] rounded-[16px] shadow-[0_15px_50px_rgba(0,0,0,0.06)] w-full max-w-5xl mx-auto flex flex-col md:flex-row overflow-hidden min-h-[350px]">
+    <div className="bg-[#FEFDFD] rounded-[16px] shadow-[0_15px_50px_rgba(0,0,0,0.06)] w-full max-w-5xl mx-auto flex flex-col md:flex-row overflow-hidden">
       {/* Left Sidebar for Tabs */}
       <div className="w-full md:w-[260px] flex flex-row md:flex-col pt-6 md:py-12 md:pl-[60px] pr-0 gap-2 px-6 shrink-0 relative z-10">
         <button

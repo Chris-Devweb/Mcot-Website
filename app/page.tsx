@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/hero-section";
 import { ActualitesSection } from "@/components/actualites-section";
 import { AgendaSection } from "@/components/agenda-section";
 import { NewsCard } from "@/components/news-card";
+import { NewsletterButton } from "@/components/newsletter-button";
 import Image from "next/image";
 
 // Fix 3: Avis documents — same NewsCard structure as Actualités
@@ -141,8 +142,7 @@ export default function Home() {
             src="/backcontact.png"
             alt="Contactez-nous"
             fill
-            className="object-cover"
-            style={{ opacity: 0.15 }}
+            className="object-cover pointer-events-none"
           />
           {/* Content */}
           <div className="relative z-10 w-full flex flex-col lg:flex-row gap-10 lg:gap-16 items-start p-8 lg:p-12">
@@ -206,9 +206,7 @@ export default function Home() {
                       Envoyer
                       <svg width="16" height="16" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     </button>
-                    <button type="button" className="flex-1 bg-[#0B4264] hover:bg-[#083050] text-white px-4 py-2.5 rounded-lg text-[12px] font-semibold transition-colors whitespace-nowrap">
-                      S&apos;inscrire à la Newsletter
-                    </button>
+                    <NewsletterButton />
                   </div>
                 </form>
               </div>
@@ -224,8 +222,7 @@ export default function Home() {
           src="/partenerbackground.png"
           alt=""
           fill
-          className="object-cover"
-          style={{ opacity: 0.08 }}
+          className="object-cover pointer-events-none"
         />
         <div className="relative z-10 px-4 sm:px-[100px] lg:px-[150px]">
           {/* Equally spaced logos following layout guide */}

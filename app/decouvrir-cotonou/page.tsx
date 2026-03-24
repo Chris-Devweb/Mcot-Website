@@ -1,13 +1,11 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { DecouvrirHero } from "@/components/decouvrir-hero";
 import { PotentialitesTabs } from "@/components/potentialites-tabs";
 import { Button } from "@/components/ui/button";
-
-export const metadata = {
-  title: "Découvrir Cotonou - Mairie de Cotonou",
-  description: "Découvrez les opportunités de la ville de Cotonou.",
-};
+import { windowNotification } from "@/components/global-notification";
 
 export default function DecouvrirCotonouPage() {
   return (
@@ -42,7 +40,14 @@ export default function DecouvrirCotonouPage() {
               <p className="text-[#333] leading-[1.8] mb-8 font-medium text-[15px] lg:text-[15.5px]">
                 A la fin du 19ème siècle, Cotonou s&apos;est développé à partir de quelques villages de pêcheurs situés à l&apos;Est et à l&apos;Ouest de la lagune. En 1888, le territoire de la ville a été cédé à la France par le Roi d&apos;Abomey, ce qui eut pour effet l&apos;accélération de son développement.
               </p>
-              <Button className="bg-[#0B7CB6] hover:bg-[#096696] text-white px-8 py-6 rounded-[8px] shadow-lg text-[14.5px] lg:text-[15px] font-bold gap-3 transition-colors">
+              <Button
+                className="bg-[#0B7CB6] hover:bg-[#096696] text-white px-8 py-6 rounded-[8px] shadow-lg text-[14.5px] lg:text-[15px] font-bold gap-3 transition-colors"
+                onClick={() => windowNotification.show({
+                  title: 'Bientôt disponible !',
+                  description: 'L\'e-boutique de souvenirs n\'est pas encore disponible. Revenez bientôt !',
+                  duration: 3500,
+                })}
+              >
                 Voir l&apos;e-boutique de souvenir
                 <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -52,10 +57,7 @@ export default function DecouvrirCotonouPage() {
 
             <div className="flex-1 w-full flex justify-center lg:justify-end relative">
               <div className="relative w-[300px] h-[380px] lg:w-[440px] lg:h-[540px]">
-                {/* Overlapping dark blue circles mimicking the stand shadow */}
-                <div className="absolute bottom-[20px] left-[15%] w-[130px] h-[130px] lg:w-[180px] lg:h-[180px] rounded-full bg-[#0B4264] opacity-90 z-0" />
-                <div className="absolute bottom-[10px] right-[20%] w-[150px] h-[150px] lg:w-[200px] lg:h-[200px] rounded-full bg-[#0B4264] opacity-80 z-0" />
-                <Image src="/Throne.png" fill alt="Trône du roi" className="object-contain relative z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]" />
+                 <Image src="/Throne.png" fill alt="Trône du roi" className="object-contain relative z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]" />
               </div>
             </div>
           </div>
@@ -197,51 +199,50 @@ export default function DecouvrirCotonouPage() {
 
         <div className="relative z-10 max-w-6xl mx-auto bg-white p-6 lg:p-8 rounded-[24px] shadow-lg border border-gray-100">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100">
-              <Image src="/routedespeches.png" fill alt="La route des pêches" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
-              <p className="absolute bottom-6 w-full text-center text-white text-[15px] font-bold px-2" style={{ textShadow: '0 2px 5px rgba(0,0,0,0.8)' }}>
+            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100 flex items-center justify-center p-4">
+              <Image src="/routedespeches.png" fill alt="La route des pêches" className="object-cover transition-transform duration-500 group-hover:scale-105 z-0" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <p className="relative z-20 w-full text-center text-white text-[16px] lg:text-[18px] font-bold drop-shadow-md" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                 La route des pêches
               </p>
             </Link>
 
-            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100">
-              <Image src="/placemartyr.png" fill alt="La place des martyrs" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
-              <p className="absolute bottom-6 w-full text-center text-white text-[15px] font-bold px-2" style={{ textShadow: '0 2px 5px rgba(0,0,0,0.8)' }}>
+            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100 flex items-center justify-center p-4">
+              <Image src="/placemartyr.png" fill alt="La place des martyrs" className="object-cover transition-transform duration-500 group-hover:scale-105 z-0" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <p className="relative z-20 w-full text-center text-white text-[16px] lg:text-[18px] font-bold drop-shadow-md" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                 La place des martyrs
               </p>
             </Link>
 
-            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100">
-              <Image src="/bioguera.png" fill alt="La place Bio Guèra" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
-              <p className="absolute bottom-6 w-full text-center text-white text-[15px] font-bold px-2" style={{ textShadow: '0 2px 5px rgba(0,0,0,0.8)' }}>
+            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100 flex items-center justify-center p-4">
+              <Image src="/bioguera.png" fill alt="La place Bio Guèra" className="object-cover transition-transform duration-500 group-hover:scale-105 z-0" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <p className="relative z-20 w-full text-center text-white text-[16px] lg:text-[18px] font-bold drop-shadow-md" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                 La place Bio Guèra
               </p>
             </Link>
 
-            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100">
-              <Image src="/amazone.png" fill alt="L'esplanade de l'Amazone" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
-              <p className="absolute bottom-6 w-full text-center text-white text-[15px] font-bold px-2" style={{ textShadow: '0 2px 5px rgba(0,0,0,0.8)' }}>
+            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100 flex items-center justify-center p-4">
+              <Image src="/amazone.png" fill alt="L'esplanade de l'Amazone" className="object-cover transition-transform duration-500 group-hover:scale-105 z-0" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <p className="relative z-20 w-full text-center text-white text-[16px] lg:text-[18px] font-bold drop-shadow-md" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                 L&apos;esplanade de l&apos;Amazone
               </p>
             </Link>
 
-            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100">
-              <Image src="/tagmural.png" fill alt="Le 3eme mur graphé le plus long du monde" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
-              <p className="absolute bottom-6 w-full text-center text-white text-[15px] font-bold px-2" style={{ textShadow: '0 2px 5px rgba(0,0,0,0.8)' }}>
+            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100 flex items-center justify-center p-4">
+              <Image src="/tagmural.png" fill alt="Le 3eme mur graphé le plus long du monde" className="object-cover transition-transform duration-500 group-hover:scale-105 z-0" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <p className="relative z-20 w-full text-center text-white text-[16px] lg:text-[18px] font-bold drop-shadow-md" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                 Le 3eme mur graphé le plus long du monde
               </p>
             </Link>
 
-            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100">
-              <Image src="/nokouelac.png" fill alt="Le lac Nokoué" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
-              <p className="absolute bottom-6 w-full text-center text-white text-[15px] font-bold px-2" style={{ textShadow: '0 2px 5px rgba(0,0,0,0.8)' }}>
+            <Link href="#" className="relative aspect-[1.1] rounded-[8px] overflow-hidden group shadow-sm bg-gray-100 flex items-center justify-center p-4">
+              <Image src="/nokouelac.png" fill alt="Le lac Nokoué" className="object-cover transition-transform duration-500 group-hover:scale-105 z-0" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <p className="relative z-20 w-full text-center text-white text-[16px] lg:text-[18px] font-bold drop-shadow-md" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                 Le lac Nokoué
               </p>
             </Link>
