@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
+import { EventModal } from "@/components/event-modal";
 
 const EVENTS = [
   {
@@ -37,6 +38,7 @@ const EVENTS = [
 
 export default function AgendaPage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedEvent, setSelectedEvent] = useState<typeof EVENTS[0] | null>(null);
 
   const prev = () => setActiveIndex((i) => (i - 1 + EVENTS.length) % EVENTS.length);
   const next = () => setActiveIndex((i) => (i + 1) % EVENTS.length);
@@ -118,13 +120,19 @@ export default function AgendaPage() {
                   key={event.id}
                   className="absolute left-1/2 cursor-pointer flex items-center justify-center select-none"
                   style={style}
-                  onClick={() => !isActive && setActiveIndex(index)}
+                  onClick={() => {
+                    if (isActive) {
+                      setSelectedEvent(event);
+                    } else {
+                      setActiveIndex(index);
+                    }
+                  }}
                 >
                   <div
                     className={`
                       relative overflow-hidden rounded-md shadow-2xl bg-white
                       ${isActive ? "w-[360px] sm:w-[450px] h-[320px] sm:h-[400px]" : "w-[280px] sm:w-[350px] h-[260px] sm:h-[320px]"}
-                      transition-all duration-500 ring-1 ring-black/5
+                      group transition-all duration-500 ring-1 ring-black/5
                     `}
                   >
                     {/* The Background Image */}
@@ -132,11 +140,7 @@ export default function AgendaPage() {
                       src={event.imageSrc}
                       alt={event.title}
                       fill
-                      className="object-cover"
-                      style={{
-                        transform: "scale(1.05)",
-                        transition: "transform 0.5s",
-                      }}
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
 
                     {/* Dark gradient overlay anchored to the bottom */}
@@ -183,6 +187,10 @@ export default function AgendaPage() {
           </Button>
         </div>
       </section>
+
+      {selectedEvent && (
+        <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      )}
     </>
   );
 }

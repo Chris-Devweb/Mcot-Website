@@ -258,9 +258,15 @@ export default function ContactPage() {
                 fill
                 className="object-cover"
               />
-              <Button className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 bg-[#0B4264] hover:bg-[#072a40] text-white px-8 py-6 rounded-lg text-[15px] font-semibold shadow-md">
-                Ouvrir une carte
-              </Button>
+              <a 
+                href="https://maps.app.goo.gl/P8xAsSmRLFiXtFTU6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 bg-[#0B4264] hover:bg-[#072a40] text-white px-8 py-6 rounded-lg text-[15px] font-semibold shadow-md">
+                  Ouvrir une carte
+                </Button>
+              </a>
             </div>
           </div>
         </div>

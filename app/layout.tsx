@@ -8,6 +8,7 @@ import { CowrieLoader } from "@/components/cowrie-loader";
 import { NewsModalRoot } from "@/components/news-modal-root";
 import { GlobalNotificationRoot } from "@/components/global-notification";
 import { NewsletterModal } from "@/components/newsletter-modal";
+import { EkodoAssistant } from "@/components/ekodo-assistant";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
           <Footer mapVersion={1} />
+          <EkodoAssistant />
           <Analytics />
           <SpeedInsights />
         </div>

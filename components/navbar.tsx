@@ -213,6 +213,9 @@ export function Navbar() {
                       <button className="text-[#0B4264]"><Menu size={28} strokeWidth={2.5} /></button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-[280px] p-0 border-l-0 bg-transparent shadow-none [&>button]:hidden">
+                      <SheetHeader className="sr-only">
+                        <SheetTitle>Menu de navigation mobile</SheetTitle>
+                      </SheetHeader>
                       <div className="mt-4 mr-4 ml-8 bg-white shadow-2xl p-8 flex flex-col" style={{ borderRadius: '20px 0px 20px 20px' }}>
                         <nav className="flex flex-col gap-6 text-[17px] font-medium mb-8">
                           <Link href="/actualites">Actualités</Link>

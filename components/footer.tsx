@@ -85,7 +85,7 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
               <Link href="/services" className="hover:text-white transition-colors">Etat civil</Link>
               <Link href="/services" className="hover:text-white transition-colors">Urbanisme</Link>
               <Link href="/documents" className="hover:text-white transition-colors">Marchés publics</Link>
-              <Link href="/services" className="hover:text-white transition-colors">Recrutement</Link>
+              <a href="https://sica.anpe.bj/portail-offres" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Recrutement</a>
             </nav>
           </div>
 
