@@ -54,23 +54,23 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
 
             {/* Social Icons */}
             <div className="flex items-center gap-4 text-white">
-              <a href="#" aria-label="Facebook" className="hover:text-blue-200 transition-colors">
+              <a href="https://www.facebook.com/lavilledecotonou/?ti=as" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-200 transition-colors">
                 <FacebookIcon className="w-[18px] h-[18px]" />
               </a>
-              <a href="#" aria-label="X (Twitter)" className="hover:text-blue-200 transition-colors">
+              <a href="https://x.com/cotonoumairie" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="hover:text-blue-200 transition-colors">
                 <XIcon className="w-[18px] h-[18px]" />
               </a>
-              <a href="#" aria-label="Instagram" className="hover:text-blue-200 transition-colors">
+              <a href="https://www.instagram.com/mairiedecotonouofficiel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-blue-200 transition-colors">
                 <InstagramIcon className="w-[18px] h-[18px]" />
               </a>
-              <a href="#" aria-label="Flickr" className="hover:text-blue-200 transition-colors flex gap-[2px]">
+              <a href="https://flickr.com/photos/199317604@N06" target="_blank" rel="noopener noreferrer" aria-label="Flickr" className="hover:text-blue-200 transition-colors flex gap-[2px]">
                 <span className="w-2.5 h-2.5 rounded-full bg-white" />
                 <span className="w-2.5 h-2.5 rounded-full bg-white" />
               </a>
-              <a href="#" aria-label="YouTube" className="hover:text-blue-200 transition-colors">
+              <a href="https://www.youtube.com/watch?v=8XU2fOMUZB8&feature=youtu.be" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-blue-200 transition-colors">
                 <YoutubeIcon className="w-[20px] h-[20px] mt-[1px]" />
               </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-blue-200 transition-colors">
+              <a href="https://www.linkedin.com/company/mairie-de-cotonou/about/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-200 transition-colors">
                 <LinkedinIcon className="w-[18px] h-[18px]" />
               </a>
             </div>
@@ -93,10 +93,15 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
           <div className="flex flex-col mb-10 lg:mb-0 lg:mr-[180px] xl:mr-[220px]">
             <h4 className="font-bold text-[15px] mb-5">Contact</h4>
             <div className="flex flex-col gap-4 text-[13px] text-gray-200">
-              <div className="flex items-start gap-3">
+              <a 
+                href="https://maps.app.goo.gl/P8xAsSmRLFiXtFTU6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 hover:text-white transition-colors"
+              >
                 <MapPin size={16} strokeWidth={2} className="mt-0.5 shrink-0" />
                 <p>Avenue Clozel, Face Stade<br />BP 2020 Cotonou, Bénin</p>
-              </div>
+              </a>
               <div className="flex items-center gap-3">
                 <Phone size={16} strokeWidth={2} className="shrink-0" />
                 <p>+229 01 21 30 04 10</p>
@@ -113,8 +118,8 @@ export function Footer({ mapVersion = 1 }: FooterProps) {
           </div>
           
           {/* Map of Benin Image Container */}
-          {/* Always visible as requested, placed absolutely on right edge. Low opacity on mobile to not obscure text. */}
-          <div className="absolute right-[-20px] bottom-12 w-[160px] h-[340px] md:w-[200px] md:h-[440px] xl:w-[250px] xl:h-[550px] z-20 pointer-events-none opacity-40 lg:opacity-100">
+          {/* Hidden on mobile, visible from lg up. */}
+          <div className="absolute right-[-20px] bottom-12 w-[160px] h-[340px] md:w-[200px] md:h-[440px] xl:w-[250px] xl:h-[550px] z-20 pointer-events-none hidden lg:block">
             <div className="relative w-full h-full">
               <Image 
                 src={mapImage}

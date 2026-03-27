@@ -3,6 +3,7 @@ import { ActualitesSection } from "@/components/actualites-section";
 import { AgendaSection } from "@/components/agenda-section";
 import { NewsCard } from "@/components/news-card";
 import { NewsletterButton } from "@/components/newsletter-button";
+import Link from "next/link";
 import Image from "next/image";
 
 // Fix 3: Avis documents — same NewsCard structure as Actualités
@@ -44,12 +45,14 @@ export default function Home() {
             <h2 className="text-[26px] lg:text-[30px] font-bold text-[#0B4264]">Avis et Communiqués</h2>
             <p className="text-[#0B4264] text-[15px] font-semibold mt-1">Presse officielle</p>
           </div>
-          <button className="flex items-center gap-2 px-5 py-2.5 border border-[#0B4264] rounded-sm text-[#0B4264] text-[13px] font-medium bg-white hover:bg-[#0B4264] hover:text-white transition-all duration-200 mt-4 md:mt-0">
-            Voir tous les articles
-            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 8h10" /><path d="M8 4l4 4-4 4" />
-            </svg>
-          </button>
+          <Link href="/documents">
+            <button className="flex items-center gap-2 px-5 py-2.5 border border-[#0B4264] rounded-sm text-[#0B4264] text-[13px] font-medium bg-white hover:bg-[#0B4264] hover:text-white transition-all duration-200 mt-4 md:mt-0">
+              Voir tous les articles
+              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 8h10" /><path d="M8 4l4 4-4 4" />
+              </svg>
+            </button>
+          </Link>
         </div>
 
         {/* Same NewsCard component as Actualités */}
@@ -77,9 +80,14 @@ export default function Home() {
             </div>
             <span className="text-[#0B4264] font-bold text-[16px]">Radio officielle de Cotonou (94.3)</span>
           </div>
-          <button className="px-5 py-2.5 border border-[#0B4264] rounded-sm text-[#0B4264] text-[13px] font-medium bg-white hover:bg-[#0B4264] hover:text-white transition-all duration-200">
+          <a 
+            href="https://zeno.fm/radio/radio-cotonou/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 border border-[#0B4264] rounded-sm text-[#0B4264] text-[13px] font-medium bg-white hover:bg-[#0B4264] hover:text-white transition-all duration-200"
+          >
             Ecouter la radio
-          </button>
+          </a>
         </div>
       </section>
 
@@ -102,33 +110,34 @@ export default function Home() {
           />
           
           {/* Content: title + paragraph top-left, button bottom-right */}
-          <div className="absolute inset-0 flex flex-col justify-between p-8 lg:p-10">
+          <div className="relative inset-0 flex flex-col justify-between p-7 lg:p-10 z-20 min-h-[320px] lg:min-h-0">
             {/* Top-left: title + paragraph */}
             <div className="max-w-[580px]">
-              <h2 className="text-white text-[1.4rem] lg:text-[1.8rem] font-black mb-4 leading-tight">
+              <h2 className="text-white text-[1.3rem] lg:text-[1.8rem] font-black mb-4 leading-tight">
                 COTONOU,<br />
-                <span className="font-normal text-[1.1rem] lg:text-[1.35rem]">Capitale économique d&apos;un pays émergent</span>
+                <span className="font-normal text-[0.95rem] lg:text-[1.35rem]">Capitale économique d&apos;un pays émergent</span>
               </h2>
-              {/* Fix 4: paragraph stretched wider to hit ~3 lines */}
-              <p className="text-white/90 text-[13px] lg:text-[14px] leading-relaxed max-w-[520px]">
+              <p className="text-white/90 text-[12.5px] lg:text-[14px] leading-relaxed max-w-[520px]">
                 La ville de Cotonou a été créée en 1830 sur l&apos;initiative du Roi Guézo, illustre roi d&apos;Abomey. Selon l&apos;une des légendes, son nom initial est «Kutonu», signifiant «la lagune de la mort», en raison du rôle de carrefour que la ville a joué dans le trafic des esclaves à travers cette région du golfe de Bénin.
               </p>
             </div>
 
-            {/* Bottom-right: "En savoir plus" button — Fix 4 */}
-            <div className="flex justify-end">
-              <button
-                className="px-7 py-3 text-white font-semibold text-[13px] rounded-sm shadow-lg flex items-center gap-3 transition-all hover:brightness-110"
-                style={{
-                  background: 'linear-gradient(90deg, #0B4264 0%, #1565a0 100%)',
-                  border: '1.5px solid rgba(255,255,255,0.35)',
-                }}
-              >
-                En savoir plus
-                <svg width="20" height="20" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 10h12" /><path d="M10 4l6 6-6 6" />
-                </svg>
-              </button>
+            {/* Bottom-right: "En savoir plus" button */}
+            <div className="flex justify-end mt-6 lg:mt-0">
+              <Link href="/decouvrir-cotonou">
+                <button
+                  className="px-6 py-2.5 text-white font-semibold text-[13px] rounded-sm shadow-lg flex items-center gap-3 transition-all hover:brightness-110"
+                  style={{
+                    background: 'linear-gradient(90deg, #0B4264 0%, #1565a0 100%)',
+                    border: '1.5px solid rgba(255,255,255,0.35)',
+                  }}
+                >
+                  En savoir plus
+                  <svg width="20" height="20" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 10h12" /><path d="M10 4l6 6-6 6" />
+                  </svg>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -201,7 +210,7 @@ export default function Home() {
                       rows={4}
                     />
                   </div>
-                  <div className="flex gap-3 pt-1">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-1">
                     <button type="submit" className="flex items-center gap-2 bg-[#0B4264] hover:bg-[#083050] text-white px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-colors">
                       Envoyer
                       <svg width="16" height="16" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -225,18 +234,18 @@ export default function Home() {
           className="object-cover pointer-events-none"
         />
         <div className="relative z-10 px-4 sm:px-[100px] lg:px-[150px]">
-          {/* Equally spaced logos following layout guide */}
-          <div className="flex items-center justify-between gap-6">
-            <div className="relative h-12 w-28 flex-shrink-0">
+          {/* Equally spaced logos — centered and grid on mobile, justify-between on desktop */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-between gap-8 lg:gap-6">
+            <div className="relative h-10 w-24 md:h-12 md:w-28 flex-shrink-0">
               <Image src="/aimf.png" alt="AIMF" fill className="object-contain" />
             </div>
-            <div className="relative h-12 w-28 flex-shrink-0">
+            <div className="relative h-10 w-24 md:h-12 md:w-28 flex-shrink-0">
               <Image src="/marseille.png" alt="Marseille" fill className="object-contain" />
             </div>
-            <div className="relative h-12 w-28 flex-shrink-0">
+            <div className="relative h-10 w-24 md:h-12 md:w-28 flex-shrink-0">
               <Image src="/rosny.png" alt="Rosny-sous-Bois" fill className="object-contain" />
             </div>
-            <div className="relative h-12 w-28 flex-shrink-0">
+            <div className="relative h-10 w-24 md:h-12 md:w-28 flex-shrink-0">
               <Image src="/seineure.png" alt="Seine-Eure Agglo" fill className="object-contain" />
             </div>
           </div>

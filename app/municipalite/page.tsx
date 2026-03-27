@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -174,7 +175,6 @@ export default function MunicipalitePage() {
       />
 
       <section className="py-8 px-4 sm:px-[100px] lg:px-[150px] bg-white pb-40 lg:pb-64">
-        {/* Tabs */}
         <div className="flex gap-2 overflow-x-auto pb-2 border-b border-gray-200 scrollbar-hide">
           {TABS.map((tab, i) => (
             <button

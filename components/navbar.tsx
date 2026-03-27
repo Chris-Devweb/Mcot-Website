@@ -8,6 +8,7 @@ import {
   ChevronDown,
   Menu,
   ArrowRight,
+  Phone,
 } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { FacebookIcon, XIcon, InstagramIcon, YoutubeIcon, LinkedinIcon } from '@/components/icons';
@@ -126,15 +127,15 @@ export function Navbar() {
             <div className="flex items-center gap-5 text-[11px] lg:text-[12px] text-gray-600 font-medium">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <a href="#" className="hover:text-blue-900 transition-colors">Mes démarches en ligne</a>
+                <a href="https://eservices.anip.bj/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-900 transition-colors">Mes démarches en ligne</a>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <a href="#" className="hover:text-blue-900 transition-colors">Gouvernement du Bénin</a>
+                <a href="https://www.gouv.bj/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-900 transition-colors">Gouvernement du Bénin</a>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#E53935]" />
-                <a href="#" className="hover:text-blue-900 transition-colors">Service Public</a>
+                <a href="https://service-public.bj/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-900 transition-colors">Service Public</a>
               </div>
             </div>
 
@@ -143,23 +144,23 @@ export function Navbar() {
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 text-[#0B4264]">
-              <a href="#" aria-label="Facebook" className="hover:text-blue-600 transition-colors">
+              <a href="https://www.facebook.com/lavilledecotonou/?ti=as" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-600 transition-colors">
                 <FacebookIcon className="w-3.5 h-3.5" />
               </a>
-              <a href="#" aria-label="X (Twitter)" className="hover:text-blue-600 transition-colors">
+              <a href="https://x.com/cotonoumairie" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="hover:text-blue-600 transition-colors">
                 <XIcon className="w-3.5 h-3.5" />
               </a>
-              <a href="#" aria-label="Instagram" className="hover:text-blue-600 transition-colors">
+              <a href="https://www.instagram.com/mairiedecotonouofficiel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-blue-600 transition-colors">
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
-              <a href="#" aria-label="Flickr" className="hover:text-blue-600 transition-colors flex gap-[1.5px] items-center">
+              <a href="https://flickr.com/photos/199317604@N06" target="_blank" rel="noopener noreferrer" aria-label="Flickr" className="hover:text-blue-600 transition-colors flex gap-[1.5px] items-center">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0B4264]" />
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0B4264]" />
               </a>
-              <a href="#" aria-label="YouTube" className="hover:text-blue-600 transition-colors">
+              <a href="https://www.youtube.com/watch?v=8XU2fOMUZB8&feature=youtu.be" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-blue-600 transition-colors">
                 <YoutubeIcon className="w-4 h-4 mt-[1px]" />
               </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-blue-600 transition-colors">
+              <a href="https://www.linkedin.com/company/mairie-de-cotonou/about/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-600 transition-colors">
                 <LinkedinIcon className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -168,10 +169,10 @@ export function Navbar() {
 
         {/* Main Navbar Layer */}
         {/* We center the entire group of (Logo + Links + Search) using a wrapper inside the container */}
-        <div className="w-full px-4 relative pt-[45px] lg:pt-[50px] pb-3 lg:pb-4 flex justify-center">
+        <div className="w-full px-4 relative pt-[45px] lg:pt-[50px] pb-3 lg:pb-4 flex justify-center bg-white lg:bg-transparent">
           <div className="flex w-full max-w-6xl items-center justify-between gap-6 lg:gap-[50px]">
             {/* 1. Logo Container */}
-            <Link href="/" className="relative shrink-0 flex items-center h-full">
+            <Link href="/" className="relative shrink-0 hidden lg:flex items-center h-full">
               <div className="absolute top-[-54px] w-[90px] h-[120px] lg:w-[115px] lg:h-[155px] z-30 flex flex-col items-center bg-[#83CEE9] rounded-b-[60px] overflow-hidden">
                 <div className="relative w-full h-[88%] mt-auto mb-[8px]"> 
                   <Image 
@@ -201,6 +202,7 @@ export function Navbar() {
                   <div className="py-2 flex flex-col">
                     <Link href="/municipalite" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Municipalité</Link>
                     <Link href="/municipalite/projets" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Projets</Link>
+                    <Link href="/municipalite/anciennes-mandatures" className="px-5 py-2.5 hover:bg-gray-50 text-[13px] text-gray-700 transition-colors whitespace-nowrap">Anciennes mandatures</Link>
                   </div>
                 </div>
               </div>
@@ -210,67 +212,91 @@ export function Navbar() {
               <Link href="/contact" className={getLinkClass('/contact')}>Contactez-nous</Link>
             </nav>
 
-            {/* 3. Actions: Search + Mobile Menu */}
-            <div className="flex items-center gap-2">
+            {/* 3. Actions: Search + Mobile Menu (Desktop) */}
+            <div className="hidden lg:flex items-center gap-2">
               <Button
                 size="sm"
                 onClick={() => setIsSearchOpen(true)}
-                className="hidden sm:inline-flex items-center gap-2.5 bg-[#0B4264] hover:bg-[#072a40] text-white px-5 py-2 rounded-[4px] font-medium transition-colors text-[14px] shadow-sm whitespace-nowrap"
+                className="inline-flex items-center gap-2 bg-[#0B4264] hover:bg-[#072a40] text-white px-5 py-2 rounded-[4px] font-medium transition-colors text-[14px] shadow-sm whitespace-nowrap"
               >
                 Recherche
-                <Search size={16} strokeWidth={2} />
+                <Search size={16} strokeWidth={2.5} />
               </Button>
+            </div>
 
-              {/* Mobile sheet menu */}
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="inline-flex lg:hidden border-white/70 text-[#0B4264] bg-white/80 hover:bg-white"
-                    aria-label="Ouvrir le menu"
+            {/* 4. Mobile Layout (Mockup Style: Text + Menu + Search) */}
+            <div className="flex lg:hidden w-full items-center justify-between px-2 sm:px-4 py-2">
+              <Link href="/" className="flex flex-col hover:opacity-80 transition-opacity">
+                <span className="text-[#0B4264] font-bold text-[18px] leading-[1.1]">Mairie de</span>
+                <span className="text-[#0B4264] font-bold text-[18px] leading-[1.1]">Cotonou</span>
+              </Link>
+              
+              <div className="flex items-center gap-6 sm:gap-8">
+                {/* Burger Menu */}
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <button className="text-[#0B4264] hover:opacity-80 transition-opacity" aria-label="Menu">
+                      <Menu size={28} strokeWidth={2.5} />
+                    </button>
+                  </SheetTrigger>
+                  <SheetContent 
+                    side="right" 
+                    className="w-[280px] p-0 border-l-0 bg-transparent shadow-none pointer-events-none [&>button]:hidden"
                   >
-                    <Menu className="h-5 w-5" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-[260px] sm:w-[300px] p-0">
-                  <SheetHeader className="px-6 pt-6 pb-4 border-b">
-                    <SheetTitle className="text-left text-[#0B4264] text-base font-semibold">
-                      Ville de Cotonou
-                    </SheetTitle>
-                  </SheetHeader>
-                  <nav className="flex flex-col gap-1 px-6 py-4 text-[15px] text-[#0B4264] font-medium">
-                    <Link href="/actualites" className="py-2.5 border-b border-gray-100">
-                      Actualités
-                    </Link>
-                    <Link href="/decouvrir-cotonou" className="py-2.5 border-b border-gray-100">
-                      Découvrez Cotonou
-                    </Link>
-                    <Link href="/municipalite" className="py-2.5 border-b border-gray-100">
-                      Municipalité
-                    </Link>
-                    <Link href="/municipalite/projets" className="py-2.5 border-b border-gray-100 pl-4 text-sm">
-                      — Projets
-                    </Link>
-                    <Link href="/services" className="py-2.5 border-b border-gray-100">
-                      Services
-                    </Link>
-                    <Link href="/documents" className="py-2.5 border-b border-gray-100">
-                      Documents
-                    </Link>
-                    <Link href="/contact" className="py-2.5">
-                      Contactez-nous
-                    </Link>
-                  </nav>
-                  <div className="px-6 pb-6">
-                    <Link href="/contact">
-                      <Button className="w-full bg-[#0B4264] hover:bg-[#072a40]">
-                        Contactez-nous
-                      </Button>
-                    </Link>
-                  </div>
-                </SheetContent>
-              </Sheet>
+                    <SheetHeader className="sr-only">
+                      <SheetTitle>Menu de navigation mobile</SheetTitle>
+                    </SheetHeader>
+                    {/* The menu box with specific rounding: 20px everywhere except top-right (0) */}
+                    <div 
+                      className="mt-4 mr-4 ml-8 bg-white shadow-2xl border border-gray-100 p-8 flex flex-col pointer-events-auto overflow-hidden"
+                      style={{ borderRadius: '20px 0px 20px 20px' }}
+                    >
+                      <nav className="flex flex-col gap-7 text-[17px] text-[#333] font-medium mb-8">
+                        <Link href="/actualites" className="hover:text-[#0B4264] transition-colors">Actualités</Link>
+                        <Link href="/decouvrir-cotonou" className="hover:text-[#0B4264] transition-colors">Découvrez Cotonou</Link>
+                        
+                        <div className="flex flex-col gap-4">
+                          <div className="flex items-center justify-between text-[#333] group cursor-pointer transition-colors hover:text-[#0B4264]">
+                            <span>Municipalité</span>
+                            <ChevronDown size={18} className="opacity-70" />
+                          </div>
+                          {/* Expanded sublinks for clarity, clean and indented */}
+                          <div className="flex flex-col gap-4 pl-4 text-[15px] font-normal text-gray-600 border-l border-gray-100 ml-1">
+                            <Link href="/municipalite" className="hover:text-[#0B4264] transition-colors">La Municipalité</Link>
+                            <Link href="/municipalite/projets" className="hover:text-[#0B4264] transition-colors">Projets & Vision</Link>
+                            <Link href="/municipalite/anciennes-mandatures" className="hover:text-[#0B4264] transition-colors">Anciennes mandatures</Link>
+                          </div>
+                        </div>
+                        
+                        <Link href="/services" className="hover:text-[#0B4264] transition-colors">Services</Link>
+                        <Link href="/documents" className="hover:text-[#0B4264] transition-colors">Documents</Link>
+                      </nav>
+
+                      <Link href="/contact" className="mt-4">
+                        <Button 
+                          className="w-full text-white py-7 flex items-center justify-center gap-3 text-[14px] font-bold shadow-lg"
+                          style={{ 
+                            background: 'linear-gradient(90deg, #06476D 0%, #0088CC 100%)',
+                            borderRadius: '8px'
+                          }}
+                        >
+                          Contactez-nous
+                          <Phone size={17} fill="currentColor" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+
+                {/* Search Icon */}
+                <button 
+                  onClick={() => setIsSearchOpen(true)}
+                  className="text-[#0B4264] hover:opacity-80 transition-opacity" 
+                  aria-label="Recherche"
+                >
+                  <Search size={26} strokeWidth={2.5} />
+                </button>
+              </div>
             </div>
           </div>
           

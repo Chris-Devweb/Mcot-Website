@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { NewsCard } from '@/components/news-card';
 import { Button } from '@/components/ui/button';
 
@@ -76,12 +77,12 @@ export function ActualitesSection() {
             variant="outline"
             className="hidden md:inline-flex items-center gap-2 border border-[#0B4264] text-[#0B4264] text-[13px] font-medium px-5 py-2.5 rounded-sm hover:bg-[#0B4264] hover:text-white transition-all duration-200 self-center whitespace-nowrap bg-transparent"
           >
-            <a href="#">
+            <Link href="/actualites">
               Voir toute l&apos;actualité
               <svg className="ml-2 w-4 h-4 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </Button>
         </div>
 

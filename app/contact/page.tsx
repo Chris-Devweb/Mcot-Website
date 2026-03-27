@@ -91,54 +91,79 @@ export default function ContactPage() {
               Voici quelques de nos coordonnées
             </p>
 
-            {/* 4 Cards Grid - gradient borders */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12 w-full">
-              {/* Office */}
-              <div className="rounded-[16px] p-[2px] bg-gradient-to-br from-blue-300 via-blue-100 to-white shadow-sm">
-                <div className="bg-[#FCFBFB] rounded-[14px] p-5 flex items-center gap-4 h-full">
-                  <div className="w-12 h-12 rounded-full bg-blue-200/50 flex flex-shrink-0 items-center justify-center">
-                    <MapPin className="text-blue-600 w-5 h-5" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-black text-[15px] leading-tight mb-0.5">Office</h4>
-                    <p className="text-gray-400 text-[13px]">BP 2020, Cotonou</p>
+            {/* 4 Cards Container — With background on mobile */}
+            <div className="relative w-full rounded-[24px] overflow-hidden lg:overflow-visible mb-12">
+              {/* Background only on mobile/md as per mockup hint */}
+              <div className="absolute inset-0 z-0 lg:hidden">
+                <Image src="/cardsection.png" alt="" fill className="object-cover brightness-100" />
+                <div className="absolute inset-0 bg-[#FAF9F8]/60 backdrop-blur-[2px]" />
+              </div>
+
+              {/* Cards Grid */}
+              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-5 p-4 sm:p-6 lg:p-0 w-full">
+                {/* Office */}
+                <div className="p-[1.5px] rounded-[22px] bg-gradient-to-br from-blue-600/60 to-blue-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-xl transition-all h-fit group">
+                  <a 
+                    href="https://maps.app.goo.gl/P8xAsSmRLFiXtFTU6" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white group-hover:bg-blue-50/30 rounded-[20px] p-5 flex items-center gap-4 cursor-pointer w-full h-full transition-colors"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-blue-100 flex flex-shrink-0 items-center justify-center">
+                      <MapPin className="text-blue-600 w-5 h-5" strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#0B4264] text-[15px] leading-tight mb-0.5">Office</h4>
+                      <p className="text-gray-500 text-[13px]">BP 2020, Cotonou</p>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Téléphone */}
+                <div className="p-[1.5px] rounded-[22px] bg-gradient-to-br from-orange-500/60 to-orange-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-xl transition-all h-fit sm:translate-y-4 lg:translate-y-0 group">
+                  <a 
+                    href="https://wa.me/2290121300410" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="bg-white group-hover:bg-orange-50/30 rounded-[20px] p-5 flex items-center gap-4 w-full h-full cursor-pointer transition-colors"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-orange-100 flex flex-shrink-0 items-center justify-center">
+                      <Phone className="text-orange-500 w-5 h-5" strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#0B4264] text-[15px] leading-tight mb-0.5">Téléphone</h4>
+                      <p className="text-gray-500 text-[13px]">+229 01 21 30 04 10</p>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Heures */}
+                <div className="p-[1.5px] rounded-[22px] bg-gradient-to-br from-emerald-600/60 to-emerald-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-xl transition-all h-fit group">
+                  <div className="bg-white group-hover:bg-emerald-50/30 rounded-[20px] p-5 flex items-center gap-4 w-full h-full transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-emerald-100 flex flex-shrink-0 items-center justify-center">
+                      <Clock className="text-emerald-600 w-5 h-5" strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#0B4264] text-[15px] leading-tight mb-0.5">Heures</h4>
+                      <p className="text-gray-500 text-[13px]">Lun-Ven : 08h-17h</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              {/* Téléphone */}
-              <div className="rounded-[16px] p-[2px] bg-gradient-to-br from-yellow-300 via-yellow-100 to-white shadow-sm">
-                <div className="bg-[#FCFBFB] rounded-[14px] p-5 flex items-center gap-4 h-full">
-                  <div className="w-12 h-12 rounded-full bg-yellow-200/50 flex flex-shrink-0 items-center justify-center">
-                    <Phone className="text-yellow-500 w-5 h-5" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-black text-[15px] leading-tight mb-0.5">Téléphone</h4>
-                    <p className="text-gray-400 text-[13px]">+229 01 21 30 04 10</p>
-                  </div>
-                </div>
-              </div>
-              {/* Heures */}
-              <div className="rounded-[16px] p-[2px] bg-gradient-to-br from-green-300 via-green-100 to-white shadow-sm">
-                <div className="bg-[#FCFBFB] rounded-[14px] p-5 flex items-center gap-4 h-full">
-                  <div className="w-12 h-12 rounded-full bg-green-200/50 flex flex-shrink-0 items-center justify-center">
-                    <Clock className="text-green-600 w-5 h-5" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-black text-[15px] leading-tight mb-0.5">Heures</h4>
-                    <p className="text-gray-400 text-[13px]">Lun-Ven : 08h-17h</p>
-                  </div>
-                </div>
-              </div>
-              {/* Email */}
-              <div className="rounded-[16px] p-[2px] bg-gradient-to-br from-purple-300 via-purple-100 to-white shadow-sm">
-                <div className="bg-[#FCFBFB] rounded-[14px] p-5 flex items-center gap-4 h-full">
-                  <div className="w-12 h-12 rounded-full bg-purple-200/50 flex flex-shrink-0 items-center justify-center">
-                    <Mail className="text-purple-600 w-5 h-5" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-black text-[15px] leading-tight mb-0.5">Email</h4>
-                    <p className="text-gray-400 text-[13px]">info@cotonou.bj</p>
-                  </div>
+
+                {/* Email */}
+                <div className="p-[1.5px] rounded-[22px] bg-gradient-to-br from-purple-600/60 to-purple-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-xl transition-all h-fit sm:translate-y-4 lg:translate-y-0 group">
+                  <a 
+                    href="mailto:info@cotonou.bj"
+                    className="bg-white group-hover:bg-purple-50/30 rounded-[20px] p-5 flex items-center gap-4 w-full h-full cursor-pointer transition-colors"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-purple-100 flex flex-shrink-0 items-center justify-center">
+                      <Mail className="text-purple-600 w-5 h-5" strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#0B4264] text-[15px] leading-tight mb-0.5">Email</h4>
+                      <p className="text-gray-500 text-[13px]">info@cotonou.bj</p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -149,22 +174,22 @@ export default function ContactPage() {
             <div className="flex items-center justify-between w-full">
               <span className="font-bold text-black text-[18px]">Social Media :</span>
               <div className="flex items-center justify-between flex-1 ml-6 sm:ml-10">
-                <a href="#" className="text-[#0B4264] hover:opacity-80 transition-opacity">
+                <a href="https://www.facebook.com/lavilledecotonou/?ti=as" target="_blank" rel="noopener noreferrer" className="text-[#0B4264] hover:opacity-80 transition-opacity">
                   <FacebookIcon className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-[#0B4264] hover:opacity-80 transition-opacity">
+                <a href="https://x.com/cotonoumairie" target="_blank" rel="noopener noreferrer" className="text-[#0B4264] hover:opacity-80 transition-opacity">
                   <XIcon className="w-[20px] h-[20px]" />
                 </a>
-                <a href="#" className="text-[#0B4264] hover:opacity-80 transition-opacity">
+                <a href="https://www.instagram.com/mairiedecotonouofficiel/" target="_blank" rel="noopener noreferrer" className="text-[#0B4264] hover:opacity-80 transition-opacity">
                   <InstagramIcon className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-[#0B4264] hover:opacity-80 transition-opacity flex items-center gap-[3px]">
+                <a href="https://flickr.com/photos/199317604@N06" target="_blank" rel="noopener noreferrer" className="text-[#0B4264] hover:opacity-80 transition-opacity flex items-center gap-[3px]">
                   <span className="w-2 h-2 bg-[#0B4264] rounded-full" /><span className="w-2 h-2 bg-[#0B4264] rounded-full" />
                 </a>
-                <a href="#" className="text-[#0B4264] hover:opacity-80 transition-opacity mt-1">
+                <a href="https://www.youtube.com/watch?v=8XU2fOMUZB8&feature=youtu.be" target="_blank" rel="noopener noreferrer" className="text-[#0B4264] hover:opacity-80 transition-opacity mt-1">
                   <YoutubeIcon className="w-[26px] h-[26px]" />
                 </a>
-                <a href="#" className="text-[#0B4264] hover:opacity-80 transition-opacity">
+                <a href="https://www.linkedin.com/company/mairie-de-cotonou/about/" target="_blank" rel="noopener noreferrer" className="text-[#0B4264] hover:opacity-80 transition-opacity">
                   <LinkedinIcon className="w-[22px] h-[22px]" />
                 </a>
               </div>
@@ -191,7 +216,7 @@ export default function ContactPage() {
                 Recevez directement dans votre boîte mail des informations concernant votre commune.<br />
                 Garantie sans SPAMS.
               </p>
-              <form 
+              <form
                 className="w-full max-w-2xl flex flex-col items-center"
                 onSubmit={(e) => {
                   e.preventDefault();

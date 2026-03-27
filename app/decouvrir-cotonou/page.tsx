@@ -85,7 +85,7 @@ export default function DecouvrirCotonouPage() {
 
       {/* SECTION: Situation économique */}
       <section className="relative w-full py-16 lg:py-24 px-4 sm:px-[100px] lg:px-[150px] bg-white overflow-hidden">
-        <div className="w-full max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
+        <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           <div className="flex-1 flex flex-col items-start text-left lg:pr-6">
             <h2 className="text-[28px] lg:text-[36px] font-bold text-[#0B4264] mb-6 tracking-tight">
               Situation économique
@@ -151,33 +151,35 @@ export default function DecouvrirCotonouPage() {
           />
           
           {/* Content: title + paragraph top-left, button bottom-right */}
-          <div className="absolute inset-0 flex flex-col justify-between p-8 lg:p-10 z-20">
+          <div className="relative inset-0 flex flex-col justify-between p-7 lg:p-10 z-20 min-h-[320px] lg:min-h-0">
             {/* Top-left: title + paragraph */}
             <div className="max-w-[580px]">
-              <h2 className="text-white text-[1.4rem] lg:text-[1.8rem] font-black mb-4 leading-tight">
+              <h2 className="text-white text-[1.3rem] lg:text-[1.8rem] font-black mb-4 leading-tight">
                 COTONOU,<br />
-                <span className="font-normal text-[1.1rem] lg:text-[1.35rem]">Capitale économique d&apos;un pays émergent</span>
+                <span className="font-normal text-[0.95rem] lg:text-[1.35rem]">Capitale économique d&apos;un pays émergent</span>
               </h2>
               {/* paragraph stretched wider to hit ~3 lines */}
-              <p className="text-white/90 text-[13px] lg:text-[14px] leading-relaxed max-w-[520px]">
+              <p className="text-white/90 text-[12.5px] lg:text-[14px] leading-relaxed max-w-[520px]">
                 La ville de Cotonou a été créée en 1830 sur l&apos;initiative du Roi Guézo, illustre roi d&apos;Abomey. Selon l&apos;une des légendes, son nom initial est «Kutonu», signifiant «la lagune de la mort», en raison du rôle de carrefour que la ville a joué dans le trafic des esclaves à travers cette région du golfe de Bénin.
               </p>
             </div>
 
             {/* Bottom-right: "Devenir partenaire" button */}
-            <div className="flex justify-end">
-              <button
-                className="px-7 py-3 text-white font-semibold text-[13px] rounded-sm shadow-lg flex items-center gap-3 transition-all hover:brightness-110"
-                style={{
-                  background: 'linear-gradient(90deg, #0B4264 0%, #1565a0 100%)',
-                  border: '1.5px solid rgba(255,255,255,0.35)',
-                }}
-              >
-                Devenir partenaire
-                <svg width="20" height="20" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 10h12" /><path d="M10 4l6 6-6 6" />
-                </svg>
-              </button>
+            <div className="flex justify-end mt-6 lg:mt-0">
+              <Link href="/contact">
+                <button
+                  className="px-6 py-2.5 text-white font-semibold text-[13px] rounded-sm shadow-lg flex items-center gap-3 transition-all hover:brightness-110"
+                  style={{
+                    background: 'linear-gradient(90deg, #0B4264 0%, #1565a0 100%)',
+                    border: '1.5px solid rgba(255,255,255,0.35)',
+                  }}
+                >
+                  Devenir partenaire
+                  <svg width="20" height="20" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 10h12" /><path d="M10 4l6 6-6 6" />
+                  </svg>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

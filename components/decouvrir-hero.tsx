@@ -57,14 +57,18 @@ export function DecouvrirHero() {
             <span>évènements à venir</span>
           </Button>
         </Link>
-        <Link href="#">
+        <a 
+          href="https://sofitel.accor.com/fr/hotels/B845.html?merchantid=ppc-sof-mar-msn-ww-fr-sear-mob&sourceid=bp-cenbp-cen&utm_source=Bing&utm_medium=cpc&utm_campaign=ppc-sof-mar-msn-ww-fr-ww-mix-sear-bp&utm_term=mar&utm_content=ww-fr-BJ-PBJ&wiz_campaign=ppc-sof-mar-msn-ww-fr-ww-mix-sear-bp-cen&msclkid=a9fe25cf3f951ea324b24c0ac95061d2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Button className="bg-white hover:bg-gray-100 text-[#0B4264] text-[15px] lg:text-[18px] font-bold px-10 py-8 lg:py-10 rounded-md shadow-2xl flex items-center gap-3">
             Où résider à Cotonou
             <svg className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
             </svg>
           </Button>
-        </Link>
+        </a>
       </div>
     </section>
   );

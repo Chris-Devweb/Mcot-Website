@@ -78,8 +78,8 @@ export function HeroSection() {
             moderne au service de ses citoyens
           </p>
 
-          {/* CTA Buttons — side by side, tall */}
-          <div className="flex flex-row gap-4">
+          {/* CTA Buttons — stack on mobile, side by side on desktop */}
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               type="button"
               onClick={(e) => {

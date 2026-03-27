@@ -111,6 +111,7 @@ export default function DocumentsPage() {
                     variant="outline"
                     size="sm"
                     className="border-[#0B4264] text-[#0B4264]"
+                    onClick={() => setPdfOpen(true)}
                   >
                     <BookOpen className="h-4 w-4 mr-1" />
                     Lire
