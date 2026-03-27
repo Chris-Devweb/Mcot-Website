@@ -8,7 +8,7 @@ import { CowrieLoader } from "@/components/cowrie-loader";
 import { NewsModalRoot } from "@/components/news-modal-root";
 import { GlobalNotificationRoot } from "@/components/global-notification";
 import { NewsletterModal } from "@/components/newsletter-modal";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
