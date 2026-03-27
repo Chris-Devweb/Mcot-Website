@@ -121,7 +121,10 @@ export default function ServicesPage() {
             <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 max-w-5xl mx-auto">
                
                {/* Card 1 - Acte de Naissance */}
-               <Card className="w-full md:w-[320px] border-gray-300 shadow-sm rounded-xl hover:shadow-md transition-shadow cursor-pointer">
+               <Card 
+                 className="w-full md:w-[320px] border-gray-300 shadow-sm rounded-xl hover:shadow-md transition-shadow cursor-pointer"
+                 onClick={() => window.open('https://eservices.anip.bj/', '_blank')}
+               >
                  <CardContent className="p-5 flex items-center gap-5">
                    <div className="w-[52px] h-[52px] rounded-full bg-[#dcfce7] text-[#15803d] flex items-center justify-center shrink-0">
                       <CustomFileIcon className="w-6 h-6" />
