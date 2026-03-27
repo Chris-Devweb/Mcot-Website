@@ -7,6 +7,9 @@ import { Footer } from "@/components/footer";
 import { CowrieLoader } from "@/components/cowrie-loader";
 import { NewsModalRoot } from "@/components/news-modal-root";
 import { GlobalNotificationRoot } from "@/components/global-notification";
+import { NewsletterModal } from "@/components/newsletter-modal";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,9 +40,12 @@ export default function RootLayout({
           <CowrieLoader />
           <NewsModalRoot />
           <GlobalNotificationRoot />
+          <NewsletterModal />
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
           <Footer mapVersion={1} />
+          <Analytics />
+          <SpeedInsights />
         </div>
       </body>
     </html>
