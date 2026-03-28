@@ -186,34 +186,12 @@ export function EkodoAssistant() {
     return { response: "Ényí a jló na kan nǔ ɖebǔ byɔ̌ ɔ, un ɖò fǐ! (Si tu veux me demander quoi que ce soit, je suis là !)" };
   };
 
-  // Play audio on site load (if browser allows)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!isOpen) {
-        // We don't call playWelcomeAudio directly here to avoid state dependence issues 
-        // and because browsers usually block non-interacted autoplay.
-        // But we can try a silent attempt or wait for first click.
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const playWelcomeAudio = useCallback(() => {
-    if (typeof window === "undefined" || isMuted) return;
-    const audio = new Audio("/fon.wav");
-    audio.volume = 0.6;
-    audio.play().catch(e => console.log("Audio play blocked:", e));
-  }, [isMuted]);
-
   return (
     <div ref={containerRef} className="fixed bottom-6 right-6 z-[200]">
       {/* Floating Toggle Button */}
       {!isOpen && (
         <button
-          onClick={() => {
-            setIsOpen(true);
-            playWelcomeAudio();
-          }}
+          onClick={() => setIsOpen(true)}
           className="group relative w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 p-[3px] bg-gradient-to-tr from-[#0B4264] via-[#0088CC] to-[#83CEE9]"
         >
           <div className="absolute inset-0 rounded-full bg-[#0088CC]/20 animate-ping duration-[3s]" />
